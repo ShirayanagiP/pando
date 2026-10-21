@@ -16,8 +16,8 @@
   "files": [
     {
       "path": ".gitignore",
-      "bytes": 2728,
-      "sha256": "281c2c159f520752a5fcf8b91d1d4a03160b33960d393185ebfbff0a702fcbe0"
+      "bytes": 2760,
+      "sha256": "48c4dac82779373b07e9c110fb9b9b2eb3baf1ff2bf816040de48963d7cd0d2b"
     },
     {
       "path": ".nojekyll",
@@ -41,8 +41,8 @@
     },
     {
       "path": "app.js",
-      "bytes": 109282,
-      "sha256": "73f1b04179da6118332894043d062fe2eb97b79f532ccef2f299649215c322fc"
+      "bytes": 111624,
+      "sha256": "c53b1d641ec2f6dbc6215b7ceb9f7f54157ec41bd69fd97d901d9ec05f81a7b3"
     },
     {
       "path": "cjk-font-data.js",
@@ -266,8 +266,8 @@
     },
     {
       "path": "dataset-loader.js",
-      "bytes": 3731,
-      "sha256": "d8f0a7535a3dbb1355b0631ff6b56fa944c9a07562409a9e954ff7b7f086fcd5"
+      "bytes": 3746,
+      "sha256": "4c5db75368b5665acc723a3939e7032389cd216efa426a3c76638d09422b90c2"
     },
     {
       "path": "export-files.js",
@@ -336,8 +336,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 43514,
-      "sha256": "9d91c0c17596263279cf660b9c9946485557012a4360c6c2311062ecd825d124"
+      "bytes": 44600,
+      "sha256": "deb8261821837132e39e40175988bcf119fbe223779af3eae66dace086d098a0"
     },
     {
       "path": "label-layout.js",
@@ -375,6 +375,11 @@
       "sha256": "f56c24df9e3e0ffda6cc499994b01761dd803e9f9ea26de45e60640c53111d66"
     },
     {
+      "path": "map-touch.js",
+      "bytes": 3301,
+      "sha256": "556f257bf9faf0ab76e5487397f2971faab0d40195556cca5202d7b5d867ca5c"
+    },
+    {
       "path": "micro-elections.js",
       "bytes": 18086,
       "sha256": "55fc8da1879c4ab774e72d608fc103e1fc78718cf7cfcf1e13a3a845f3b96866"
@@ -388,6 +393,11 @@
       "path": "micro-workflow.js",
       "bytes": 26618,
       "sha256": "0a24b9786ef3bea7c063f22d8a9dc6ab03c905c35115a90b26176f31228e733e"
+    },
+    {
+      "path": "mobile-map.css",
+      "bytes": 3084,
+      "sha256": "b48718ba8ab451c1d0d738bab5b0a7f51c72ea4c760e1958b36bfbcc96509110"
     },
     {
       "path": "place-names-data.js",

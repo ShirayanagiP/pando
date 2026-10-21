@@ -9,6 +9,7 @@
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./private-maps.css">
+  <link rel="stylesheet" href="./mobile-map.css">
   <script src="./map-catalog.js" defer></script>
   <script src="./private-map-packs.js" defer></script>
   <script src="./dataset-loader.js" defer></script>
@@ -40,7 +41,7 @@
   <header class="app-header">
     <a class="brand" href="./index.html" aria-label="판도 지도 목록"><span class="brand-icon"><svg><use href="#i-map"/></svg></span><span>판도<span class="brand-en">PANDO</span></span></a>
     <span class="header-divider"></span><span class="header-description">나만의 지도를 그리는 공간</span>
-    <div class="header-end"><button id="sidebar-toggle" class="sidebar-toggle button secondary" aria-controls="editor-sidebar" aria-expanded="false"><svg><use href="#i-list"/></svg> 편집·설정</button><span class="local-badge"><span></span> 개인 작업실</span><button id="help-button" class="icon-button" title="사용 방법 및 지도 정보" aria-label="사용 방법 및 지도 정보"><svg><use href="#i-info"/></svg></button></div>
+    <div class="header-end"><button id="sidebar-toggle" class="sidebar-toggle button secondary" aria-controls="editor-sidebar" aria-expanded="false"><svg><use href="#i-list"/></svg> 색상과 설정</button><span class="local-badge"><span></span> 개인 작업실</span><button id="help-button" class="icon-button" title="사용 방법 및 지도 정보" aria-label="사용 방법 및 지도 정보"><svg><use href="#i-info"/></svg></button></div>
   </header>
   <main id="map-picker" class="map-picker" hidden>
     <div class="map-picker-intro"><span>판도 작업실</span><h1>어떤 지도를 그릴까요?</h1><p>지도와 단계를 선택하세요. 각 지도의 작업은 이 브라우저에 따로 저장됩니다.</p></div>
@@ -71,6 +72,7 @@
   <div id="dataset-loading" class="dataset-loading" role="status">지도를 불러오는 중…</div>
   <main class="app-layout" aria-busy="true">
     <aside class="sidebar" id="editor-sidebar" aria-label="지도 편집 도구">
+      <div class="mobile-settings-heading"><strong>색상과 지도 설정</strong><button id="sidebar-close" class="icon-button" aria-label="색상과 지도 설정 닫기"><svg><use href="#i-close"/></svg></button></div>
       <div class="sidebar-scroll">
         <section class="tools-section">
           <div class="section-heading"><h2>편집 도구</h2></div>
@@ -160,6 +162,13 @@
           <div class="map-breadcrumb"><svg><use href="#i-map"/></svg><span id="mode-name">대륙판도학</span><span class="breadcrumb-slash">/</span><span id="map-view-name">동아시아</span><span class="breadcrumb-slash">/</span><strong>판도</strong><span id="boundary-count" class="boundary-badge"></span></div>
           <div class="history-actions"><button id="undo-button" class="icon-button" title="실행 취소 (Ctrl+Z)" aria-label="실행 취소" disabled><svg><use href="#i-undo"/></svg></button><button id="redo-button" class="icon-button" title="다시 실행 (Ctrl+Shift+Z)" aria-label="다시 실행" disabled><svg><use href="#i-redo"/></svg></button><span></span><button id="region-toggle" class="icon-button" title="지역 검색 및 목록" aria-label="지역 검색 및 목록" aria-expanded="false"><svg><use href="#i-search"/></svg></button></div>
         </div>
+        <div class="mobile-map-tools" role="group" aria-label="빠른 편집 도구">
+          <button data-tool="brush" class="tool active" aria-pressed="true"><svg><use href="#i-brush"/></svg><span>색칠</span></button>
+          <button data-tool="eraser" class="tool" aria-pressed="false"><svg><use href="#i-eraser"/></svg><span>지우개</span></button>
+          <button data-tool="pan" class="tool" aria-pressed="false"><svg><use href="#i-hand"/></svg><span>이동</span></button>
+          <button data-tool="picker" class="tool" aria-pressed="false"><svg><use href="#i-picker"/></svg><span>색 추출</span></button>
+          <button id="mobile-map-settings" aria-controls="editor-sidebar" aria-expanded="false"><svg><use href="#i-list"/></svg><span>설정</span></button>
+        </div>
         <div class="map-viewport" id="map-viewport" data-tool="brush">
           <svg id="map-svg" viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg" aria-label="동아시아 행정구역 색칠 지도"><defs id="province-clips"></defs><defs id="family-clips"></defs><defs id="label-clips"></defs><g id="map-transform"><g id="map-base" aria-hidden="true" style="pointer-events:none"></g><g id="territory-fills" aria-hidden="true" style="pointer-events:none"></g><g id="regions"></g><g id="region-boundaries" aria-hidden="true" style="pointer-events:none"></g><g id="province-borders" aria-hidden="true"></g><g id="family-borders" aria-hidden="true" style="pointer-events:none"></g><g id="election-boundaries" aria-hidden="true" style="pointer-events:none"></g><g id="outline-borders" aria-hidden="true" style="pointer-events:none"></g><g id="map-labels" aria-hidden="true"></g></g></svg>
           <div class="north-arrow" aria-hidden="true"><span>N</span><svg width="22" height="38" viewBox="0 0 22 38"><path d="m11 5 7 24-7-5-7 5Z" fill="#6e8279"/><path d="M11 5v19l-7 5Z" fill="#d1dcd6"/></svg></div>
@@ -223,7 +232,7 @@
       <p id="quick-color-error" class="color-error" role="status" hidden></p><button id="apply-quick-color" class="button secondary">이 범례에 적용</button>
     </div>
   </div>
-  <button id="sidebar-backdrop" class="sidebar-backdrop" aria-label="편집·설정 닫기" hidden></button>
+  <button id="sidebar-backdrop" class="sidebar-backdrop" aria-label="색상과 설정 닫기" hidden></button>
   <input type="file" id="import-file" accept=".json,application/json" hidden>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <dialog id="info-dialog"><div class="dialog-heading"><span class="dialog-label">지도 정보</span><button data-close-dialog class="icon-button" aria-label="닫기"><svg><use href="#i-close"/></svg></button></div><h2>한 칸씩, 나만의 판도.</h2><p>행정구역을 클릭하거나 드래그해 같은 색으로 칠하세요. 작은 지역은 지도를 확대하거나 지역 검색으로 찾을 수 있어요.</p><div class="shortcut-grid"><span>색칠 / 지우개</span><span><kbd>B</kbd> / <kbd>E</kbd></span><span>이동 / 색 추출</span><span><kbd>H</kbd> / <kbd>I</kbd></span><span>실행 취소 / 다시 실행</span><span><kbd>Ctrl Z</kbd> / <kbd>Ctrl Shift Z</kbd></span><span>임시 이동</span><kbd>Space + 드래그</kbd></div><p>작업은 현재 브라우저에 자동 저장됩니다. <strong>작업 저장</strong>으로 JSON 파일을 보관하고 <strong>불러오기</strong>로 이어서 편집하세요. 이미지는 ‘지도 보기·출력 범위’에서 선택한 전체 영역을 내보냅니다. 다른 국가의 색칠도 작업 파일에 함께 보관됩니다.</p><div class="data-credit">

@@ -507,8 +507,8 @@
       $('instruction-title').textContent=dockTab==='election'?'읍면동으로 선거구를 획정하세요':dockTab==='regions'?'권역 배정은 선택 사항입니다':state.elections.detailPainting?'읍면동별 명도 색칠':'정당을 골라 선거구에 의석을 배정하세요';
       $('instruction-detail').textContent=dockTab==='election'?'선거구 카드의 지도에서 편집 → 읍면동 클릭·드래그':dockTab==='regions'?'아래에서 권역을 만들거나 다음 단계로 넘어가세요':state.elections.detailPainting?'세부 색칠 | 의석 배정 유지':'선거구 클릭·드래그 | 의석 자동 배정';return;
     }
-    if(count){$('instruction-title').textContent='나만의 지도가 만들어지고 있어요';$('instruction-detail').textContent='드래그로 연속 색칠 | 실수했다면 Ctrl + Z';}
-    else{$('instruction-title').textContent='어디부터 채워볼까요?';$('instruction-detail').textContent='왼쪽에서 그룹을 고른 뒤, 지역을 클릭하세요.';}
+    if(count){$('instruction-title').textContent='나만의 지도가 만들어지고 있어요';$('instruction-detail').textContent=sidebarMedia.matches?'한 손가락으로 색칠 | 두 손가락으로 확대와 이동':'드래그로 연속 색칠 | 실수했다면 Ctrl + Z';}
+    else{$('instruction-title').textContent='어디부터 채워볼까요?';$('instruction-detail').textContent=sidebarMedia.matches?'위에서 도구를 고르고 지역을 터치하세요. 두 손가락으로 확대할 수 있어요.':'왼쪽에서 그룹을 고른 뒤, 지역을 클릭하세요.';}
   }
   function renderSettings() {
     renderMapScope();
@@ -971,7 +971,7 @@
   $('apply-quick-color').addEventListener('click',()=>applyQuickColor());
   document.addEventListener('pointerdown',e=>{if(!$('quick-color-picker').hidden&&!$('quick-color-picker').contains(e.target)&&!e.target.closest('.legend-color'))closeQuickColor();});
   window.addEventListener('resize',positionQuickColor);window.addEventListener('scroll',positionQuickColor,{passive:true});
-  document.querySelectorAll('.tool').forEach(b=>b.addEventListener('click',()=>setTool(b.dataset.tool)));
+  document.querySelectorAll('.tool').forEach(b=>b.addEventListener('click',()=>{touchInput.cancel();endGesture();setTool(b.dataset.tool);if(sidebarMedia.matches)toggleSidebar(false);}));
   $('add-group').addEventListener('click',()=>addGroup());
   for(const [id,key]of [['show-borders','borders'],['show-family-borders','familyBorders'],['show-region-borders','regionBorders'],['show-labels','labels'],['omit-suffix','omitSuffix'],['auto-spacing','autoSpacing'],['labels-over-water','labelsOverWater'],['export-legend','legend']])$(id).addEventListener('change',e=>mutate(()=>state.settings[key]=e.target.checked));
   $('label-mode').addEventListener('change',e=>mutate(()=>state.settings.labelMode=e.target.value));
@@ -1127,20 +1127,35 @@
   document.querySelectorAll('[data-export]').forEach(b=>b.addEventListener('click',()=>exportImage(b.dataset.export)));
   document.addEventListener('click',e=>{if(!e.target.closest('.export-wrap')){$('export-menu').hidden=true;$('export-button').setAttribute('aria-expanded','false');}});
   $('help-button').addEventListener('click',()=>$('info-dialog').showModal());
-  const sidebarMedia=window.matchMedia('(max-width:720px)');
+  const sidebarMedia=window.matchMedia('(max-width:720px), (pointer:coarse) and (max-width:1100px)');
   function syncSidebar(){
     const open=$('editor-sidebar').classList.contains('open');
     $('editor-sidebar').inert=sidebarMedia.matches&&!open;
     $('sidebar-backdrop').hidden=!(sidebarMedia.matches&&open);
+    document.body.classList.toggle('mobile-settings-open',sidebarMedia.matches&&open);
   }
-  function toggleSidebar(open){$('editor-sidebar').classList.toggle('open',open);$('sidebar-toggle').setAttribute('aria-expanded',open);syncSidebar();}
+  function toggleSidebar(open){$('editor-sidebar').classList.toggle('open',open);for(const id of ['sidebar-toggle','mobile-map-settings'])$(id).setAttribute('aria-expanded',String(open));syncSidebar();}
   $('sidebar-toggle').addEventListener('click',()=>toggleSidebar(!$('editor-sidebar').classList.contains('open')));
+  $('mobile-map-settings').addEventListener('click',()=>toggleSidebar(!$('editor-sidebar').classList.contains('open')));
+  $('sidebar-close').addEventListener('click',()=>toggleSidebar(false));
   $('sidebar-backdrop').addEventListener('click',()=>toggleSidebar(false));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebarMedia.matches)toggleSidebar(false);});
   sidebarMedia.addEventListener('change',syncSidebar);syncSidebar();
   document.querySelectorAll('[data-close-dialog]').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
   document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('click',e=>{if(e.target===dialog){const b=dialog.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)dialog.close();}}));
 
   const viewport=$('map-viewport');
+  const touchInput=window.PandoMapTouch.create({
+    getView:()=>view,setView:next=>{view=next;applyView();hideTooltip();},
+    point:p=>basePoint(p.x,p.y),regionAt:p=>regionAt(p.x,p.y),getTool:()=>tool,hideTooltip,
+    startStroke:(id,erase)=>{gesture={mode:'paint',before:snapshot(),erase,visited:new Set([id])};paintRegion(id,erase);},
+    moveStroke:id=>{if(gesture?.mode==='paint'&&!gesture.visited.has(id)){gesture.visited.add(id);paintRegion(id,gesture.erase);}},
+    endStroke:endGesture,
+    cancelStroke:()=>{if(gesture?.mode!=='paint')return;state=JSON.parse(gesture.before);gesture=null;renderAll();},pick:pickRegion
+  });
+  viewport.addEventListener('pointerdown',e=>{if(touchInput.down(e)){viewport.setPointerCapture(e.pointerId);e.preventDefault();}});
+  viewport.addEventListener('pointermove',e=>{if(touchInput.move(e))e.preventDefault();});
+  for(const event of ['pointerup','pointercancel','lostpointercapture'])viewport.addEventListener(event,e=>{if(touchInput.up(e)&&viewport.hasPointerCapture(e.pointerId))viewport.releasePointerCapture(e.pointerId);});
   const insetHost=$('world-insets');
   function toggleInsetExport(target){const tile=target.closest('[data-inset-hide-tile]'),panel=target.closest('[data-inset-hide-panel]');if(!tile&&!panel)return false;mutate(()=>state.settings.worldInsetHidden=Insets.toggleHidden(state.settings.worldInsetHidden,tile?'tile':'panel',tile?.dataset.insetHideTile||panel.dataset.insetHidePanel),false);renderSettings();return true;}
   insetHost.addEventListener('click',e=>{if(toggleInsetExport(e.target)){e.preventDefault();e.stopPropagation();}});
@@ -1155,6 +1170,7 @@
   viewport.addEventListener('contextmenu',e=>e.preventDefault());
   viewport.addEventListener('wheel',e=>{if(!e.ctrlKey&&!e.metaKey)return;e.preventDefault();zoom(Math.exp(-Math.sign(e.deltaY)*.16),e.clientX,e.clientY)},{passive:false});
   viewport.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='touch')return;
     if(e.button!==0&&e.button!==1&&e.button!==2)return;
     if(gesture)return;
     const id=regionAt(e.clientX,e.clientY),p=basePoint(e.clientX,e.clientY);
@@ -1166,6 +1182,7 @@
     viewport.setPointerCapture(e.pointerId);e.preventDefault();
   });
   viewport.addEventListener('pointermove',e=>{
+    if(e.pointerType==='touch')return;
     if(gesture){
       if(e.pointerId!==gesture.pointerId)return;
       if(gesture.mode==='pan'){const p=basePoint(e.clientX,e.clientY);view.x=gesture.x+p.x-gesture.start.x;view.y=gesture.y+p.y-gesture.start.y;applyView();}
@@ -1193,8 +1210,8 @@
     if(key==='/'){e.preventDefault();toggleRegionPanel(true);}
   });
   document.addEventListener('keyup',e=>{if(e.key===' '){spacePan=false;viewport.classList.remove('space-pan');}});
-  window.addEventListener('blur',()=>{spacePan=false;viewport.classList.remove('space-pan');endGesture();});
-  window.addEventListener('pagehide',()=>{endGesture();finishInsetGesture();persist()});
+  window.addEventListener('blur',()=>{touchInput.cancel();spacePan=false;viewport.classList.remove('space-pan');endGesture();});
+  window.addEventListener('pagehide',()=>{touchInput.cancel();endGesture();finishInsetGesture();persist()});
   new ResizeObserver(()=>{queueLabelView();queueScene();}).observe($('map-svg'));
   const credit=document.querySelector('.data-credit');credit.replaceChildren();
   const summary=document.createElement('strong');summary.textContent=`${MODE_NAME} | ${AREA_NAME} / ${DATA.regions.length.toLocaleString()}개 지역`;credit.appendChild(summary);
@@ -1231,6 +1248,9 @@
     }
     microUI=window.PandoMicroUI.create({data:DATA,getProject:()=>state,mutate,toast,openColor:openQuickColor,locateRegion:id=>{locateRegion(id);$('map-shell').scrollIntoView({block:'start',behavior:'smooth'});},locateDistrict:locateElection,changeStage:setDockTab,confirm:askConfirm,activateBrush:()=>setTool('brush')});
   }
+  const desktopCanvasNote=document.querySelector('.canvas-note').textContent;
+  const syncTouchHint=()=>{document.querySelector('.canvas-note').textContent=sidebarMedia.matches?'두 손가락: 확대·축소와 이동 | 이동 도구: 한 손가락 이동':desktopCanvasNote;};
+  sidebarMedia.addEventListener('change',syncTouchHint);syncTouchHint();
   buildMap();renderAll();applyView();
   if(!storageAvailable)$('save-status').querySelector('span').textContent='자동 저장 불가 | 작업 저장으로 파일을 보관하세요';
 })();

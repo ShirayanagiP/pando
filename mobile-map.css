@@ -1,0 +1,29 @@
+.mobile-map-tools,.mobile-settings-heading{display:none}
+@media(max-width:720px),(pointer:coarse) and (max-width:1100px){
+  .app-header{height:62px;padding:0 14px;gap:10px}
+  .header-description,.header-divider,.local-badge{display:none}
+  .header-end{gap:7px}.sidebar-toggle{display:inline-flex;font-size:11px;min-height:44px;padding:9px}
+  .app-layout{display:block;height:auto}
+  .sidebar{display:flex;position:fixed;inset:62px auto 0 0;top:62px;width:min(340px,calc(100vw - 52px));height:calc(100dvh - 62px);z-index:50;overflow:auto;transform:translateX(-110%);transition:transform .18s;background:#fffefa;box-shadow:10px 0 35px #1d392d24;align-self:auto;order:0;border-right:1px solid var(--line);border-top:0}
+  .sidebar.open{transform:translateX(0)}
+  .sidebar-scroll{display:block;padding:20px;overflow:visible;flex:none}
+  .sidebar .tool{min-height:44px;font-size:12px;padding:11px}
+  .sidebar-backdrop{display:block;position:fixed;inset:62px 0 0 min(340px,calc(100vw - 52px));z-index:40;background:#1f382d40;backdrop-filter:blur(1px)}
+  .mobile-settings-heading{display:flex;position:sticky;top:0;z-index:2;flex:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:#fffefa;border-bottom:1px solid var(--line);font-size:14px}
+  .mobile-settings-heading .icon-button{width:44px;height:44px}
+  body.mobile-settings-open{overflow:hidden}
+  .workspace{height:auto;min-height:0;padding:17px 12px 24px;overflow:visible}
+  .project-actions{flex-wrap:wrap}.project-actions>.export-wrap{margin-left:0;flex:1 1 140px;min-width:0}.project-actions>.export-wrap>.button{width:100%;justify-content:center}.project-actions .button{min-height:44px}
+  .map-shell{height:clamp(520px,78dvh,760px);min-height:520px;scroll-margin-top:70px}
+  .mobile-map-tools{position:absolute;top:48px;left:8px;right:8px;z-index:5;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:5px;border:1px solid #dce5d5;border-radius:9px;background:#fffefaf5;box-shadow:0 2px 10px #244e420c}
+  .mobile-map-tools .tool,.mobile-map-tools>button{min-width:0;min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:5px 2px;font-size:10px;border-radius:6px;color:#657f59;border:1px solid transparent}
+  .mobile-map-tools .tool.active{background:#e6efdf;border-color:#a8c19a;color:#244e42}
+  .mobile-map-tools svg{width:19px;height:19px}.mobile-map-tools>button:last-child{border-left:1px solid #e2e9dc;border-radius:0 6px 6px 0}
+  .map-viewport{inset:112px 0 38px;touch-action:none}
+  .zoom-controls{right:8px;bottom:44px;padding:3px;z-index:6}
+  .zoom-controls .icon-button{width:44px;height:44px}.zoom-controls .icon-button svg{width:19px;height:19px}
+  .zoom-controls .zoom-value{min-width:44px;height:38px;font-size:11px}
+  .map-instruction{left:10px;bottom:46px;max-width:calc(100% - 76px);pointer-events:none}.map-instruction button{pointer-events:auto}
+  .map-instruction>div>span{max-width:190px;line-height:1.5}
+  .canvas-note{max-width:calc(100% - 20px);font-size:8px;line-height:1.5;bottom:10px}
+}

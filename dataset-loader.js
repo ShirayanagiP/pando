@@ -38,7 +38,7 @@
     await script('./world-insets.js');
     await script('./export-files.js');
     await Promise.all([...(selection.privatePack?[]:[script('./'+selection.source)]),...['place-names-data.js','vendor/opentype.min.js','font-data.js','cjk-font-data.js','color-tools.js','territory-geometry.js','map-renderer.js',...(chosen==='macro'?['world-font-data.js']:[]),...(chosen==='micro'?['micro-elections.js']:[])].map(src=>script('./'+src))]);
-    for(const src of ['webfonts.js','label-layout.js','place-names.js','region-search.js','map-captions.js','project-model.js','project-svg.js',...(window.PANDO_MAP.game?['game-campaign.js']:[]),...(chosen==='micro'?['micro-workflow.js']:[]),'app.js']){
+    for(const src of ['webfonts.js','label-layout.js','place-names.js','region-search.js','map-captions.js','project-model.js','project-svg.js','map-touch.js',...(window.PANDO_MAP.game?['game-campaign.js']:[]),...(chosen==='micro'?['micro-workflow.js']:[]),'app.js']){
       await script('./'+src);
       if(src==='place-names.js'&&window.PANDO_MAP.placeNames)window.PandoPlaceNames.register(window.PANDO_MAP.placeNames);
     }

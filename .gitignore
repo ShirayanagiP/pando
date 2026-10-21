@@ -74,9 +74,11 @@
 !/map-catalog.js
 !/map-data.js
 !/map-renderer.js
+!/map-touch.js
 !/micro-elections.js
 !/micro-map-data.js
 !/micro-workflow.js
+!/mobile-map.css
 !/place-names-data.js
 !/place-names.js
 !/private-map-packs.js
