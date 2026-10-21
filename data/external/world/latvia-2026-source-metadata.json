@@ -1,0 +1,18 @@
+{
+  "publisher": "Latvia Ministry of Smart Administration and Regional Development (VARAM)",
+  "underlyingSource": "State Land Service State Address Register geospatial data",
+  "dataset": "Administratīvās teritorijas – 2021 / 2026",
+  "publicationDate": "2026-05-07",
+  "downloaded": "2026-10-20",
+  "featureCount": 42,
+  "municipalities": 35,
+  "independentStateCities": 7,
+  "sourceCRS": "EPSG:3059 (LKS-92 / Latvia TM)",
+  "runtimeCRS": "Existing PANDO equirectangular map coordinates",
+  "license": "CC0 1.0",
+  "catalogURL": "https://data.gov.lv/dati/dataset/atr/resource/f1fe9a47-62af-4156-84ae-b11ac029b00f",
+  "sourceURL": "https://data.gov.lv/dati/dataset/7bb04db9-97ce-4a30-b93a-10ba8dafd104/resource/f1fe9a47-62af-4156-84ae-b11ac029b00f/download/administrativas_teritorijas_2026.geojson",
+  "sha256": "50ea95a8bb00ea89ec2c03ecb867b53e4cb34d96998306fbf952ae20bb5774ec",
+  "officialStructureURL": "https://www.varam.gov.lv/lv/pasvaldibas",
+  "processing": "Shared-boundary simplification at 150 m in EPSG:3059; transform to WGS84 with pyproj; fit only external coastline/international-outline differences to the existing Natural Earth outline; apply common world topology and screen LOD generation. Varaklani is already merged into Madona in the official source."
+}

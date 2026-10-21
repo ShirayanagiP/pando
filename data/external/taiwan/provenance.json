@@ -1,0 +1,10 @@
+{
+  "country": "taiwan",
+  "source": "https://geo.maderaojen.me/datasets/tw-counties/releases/v1/2026-08-07.1/data.geojson",
+  "boundaryDate": "2025-03-18",
+  "license": "Open Government Data License Taiwan 1.0",
+  "details": "../../LICENSE-EAST-ASIA.md",
+  "normalizedFile": "regions.geojson",
+  "normalizedFeatureCount": 22,
+  "retrievedAt": "2026-10-19"
+}

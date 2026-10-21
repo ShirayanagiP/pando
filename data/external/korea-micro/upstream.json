@@ -1,0 +1,10 @@
+{
+  "adm": {
+    "repository": "https://github.com/vuski/admdongkor",
+    "commit": "d5d5a821c8de6cc337d47eeca604d7af76271c9b"
+  },
+  "election": {
+    "repository": "https://github.com/OhmyNews/2024_22_elec_map",
+    "commit": "a51784b86e1fa58cc7691e533da1e72589b35b31"
+  }
+}

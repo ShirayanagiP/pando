@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="거시판도학·대륙판도학·미시판도학. 세계·동아시아·대한민국 읍면동에 색을 입히는 개인 지도 작업실.">
+  <meta name="theme-color" content="#244e42">
+  <title>판도 — 나만의 지도</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./private-maps.css">
+  <script src="./map-catalog.js" defer></script>
+  <script src="./private-map-packs.js" defer></script>
+  <script src="./dataset-loader.js" defer></script>
+  <script src="./private-map-ui.js" defer></script>
+</head>
+<body>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Z"/><path d="M9 3v16M15 5v16"/></symbol>
+    <symbol id="i-brush" viewBox="0 0 24 24"><path d="m14 5 5 5M8 16l-1-3L17 3a2.1 2.1 0 0 1 3 3L10 16H8Z"/><path d="M8 16c-5-1-2 5-6 5 6 2 9-2 6-5Z"/></symbol>
+    <symbol id="i-eraser" viewBox="0 0 24 24"><path d="m4 13 9-10a2 2 0 0 1 3 0l5 5a2 2 0 0 1 0 3L11 21H8l-4-4a3 3 0 0 1 0-4Z"/><path d="m8 9 8 8M11 21h10"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 12V5a2 2 0 0 1 4 0v7-9a2 2 0 0 1 4 0v9-6a2 2 0 0 1 4 0v7c0 6-2 9-7 9-3 0-5-2-7-5l-3-4a2 2 0 0 1 3-3l2 2Z"/></symbol>
+    <symbol id="i-picker" viewBox="0 0 24 24"><path d="m14 5 5 5M12 7 4 15l-1 6 6-1 8-8M14 5l3-3a3 3 0 0 1 4 4l-3 3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="M8 4 3 9l5 5M3 9h10a7 7 0 0 1 0 14" transform="translate(0 -2)"/></symbol>
+    <symbol id="i-redo" viewBox="0 0 24 24"><path d="m16 4 5 5-5 5M21 9H11a7 7 0 0 0 0 14" transform="translate(0 -2)"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7V4h7l3 3h8v13H3V7Z"/><path d="M3 10h18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-fit" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M8 8h8v8H8Z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m15 4 5 5M3 21l5-1L21 7a2 2 0 0 0-4-4L4 16l-1 5Z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+  </defs></svg>
+  <header class="app-header">
+    <a class="brand" href="./index.html" aria-label="판도 지도 목록"><span class="brand-icon"><svg><use href="#i-map"/></svg></span><span>판도<span class="brand-en">PANDO</span></span></a>
+    <span class="header-divider"></span><span class="header-description">나만의 지도를 그리는 공간</span>
+    <div class="header-end"><button id="sidebar-toggle" class="sidebar-toggle button secondary" aria-controls="editor-sidebar" aria-expanded="false"><svg><use href="#i-list"/></svg> 편집·설정</button><span class="local-badge"><span></span> 개인 작업실</span><button id="help-button" class="icon-button" title="사용 방법 및 지도 정보" aria-label="사용 방법 및 지도 정보"><svg><use href="#i-info"/></svg></button></div>
+  </header>
+  <main id="map-picker" class="map-picker" hidden>
+    <div class="map-picker-intro"><span>판도 작업실</span><h1>어떤 지도를 그릴까요?</h1><p>지도와 단계를 선택하세요. 각 지도의 작업은 이 브라우저에 따로 저장됩니다.</p></div>
+    <section class="map-picker-section"><div class="map-picker-section-heading"><h2>거시판도학</h2><p>세계의 행정구역</p></div><div class="map-choice-grid">
+      <article class="map-choice"><span class="map-choice-kind">세계</span><h3>세계 지도</h3><p>1차 행정구역과 작은 국가별 묶음</p><div class="map-choice-links"><a href="./index.html?mode=macro">유럽 중심으로 열기 <span>↗</span></a><a href="./index.html?mode=macro&amp;center=asia">아시아 중심으로 열기 <span>↗</span></a></div></article>
+    </div></section>
+    <section class="map-picker-section private-maps" aria-labelledby="private-maps-heading">
+      <div class="map-picker-section-heading"><h2 id="private-maps-heading">개인용 지도 팩</h2><p>이 기기에서만 사용하는 게임 지도</p></div>
+      <div class="private-map-import"><button id="private-map-import" class="button secondary" type="button"><svg><use href="#i-folder"/></svg> 지도 팩 불러오기</button><input id="private-map-file" type="file" accept=".json,application/json" hidden><a href="./PRIVATE_MAPS.md" target="_blank" rel="noopener noreferrer">PC에서 휴대폰으로 옮기는 방법 ↗</a></div>
+      <p class="private-map-note">EU4 / HOI4 / Victoria II | .pandomap.json 파일을 선택하세요. 서버로 업로드하지 않고 이 브라우저에 저장합니다. 색칠한 작업 JSON은 지도 안의 ‘불러오기’를 사용하세요.</p>
+      <p id="private-map-status" class="private-map-status" role="status" aria-live="polite"></p>
+      <div id="private-map-list" class="map-choice-grid"></div>
+    </section>
+    <div class="map-picker-levels"><section class="map-picker-section"><div class="map-picker-section-heading"><h2>대륙판도학</h2><p>더 세밀한 지역의 경계</p></div><a class="map-choice" href="./index.html?mode=continental"><span class="map-choice-kind">동아시아</span><h3>동아시아 지도</h3><p>한반도, 중국, 일본, 대만, 몽골, 러시아 동부</p><span class="map-choice-open">지도 열기 ↗</span></a></section>
+    <section class="map-picker-section"><div class="map-picker-section-heading"><h2>미시판도학</h2><p>읍면동과 선거 설계</p></div><a class="map-choice" href="./index.html?mode=micro"><span class="map-choice-kind">대한민국</span><h3>대한민국 읍면동 지도</h3><p>행정동 단위 | 선거구 획정과 의석 배정</p><span class="map-choice-open">지도 열기 ↗</span></a></section></div>
+  </main>
+  <nav class="mode-navigation" aria-label="판도학 단계">
+    <a href="./index.html?mode=macro" data-mode="macro"><strong>거시판도학</strong><span>세계 | 1차 행정구역</span></a>
+    <a href="./index.html?mode=continental" data-mode="continental" aria-current="page"><strong>대륙판도학</strong><span>동아시아 | 군급 행정구역</span></a>
+    <a href="./index.html?mode=micro" data-mode="micro"><strong>미시판도학</strong><span>대한민국 | 읍면동·선거구</span></a>
+  </nav>
+  <nav id="macro-map-navigation" class="macro-map-navigation" aria-label="거시판도학 지도 선택" hidden>
+    <label for="macro-map">지도 선택</label>
+    <select id="macro-map" aria-label="거시판도학 지도"></select>
+    <button id="game-campaign" class="button secondary" hidden>캠페인 시작 국가 색칠</button>
+    <span id="macro-map-description"></span>
+  </nav>
+  <div id="dataset-loading" class="dataset-loading" role="status">지도를 불러오는 중…</div>
+  <main class="app-layout" aria-busy="true">
+    <aside class="sidebar" id="editor-sidebar" aria-label="지도 편집 도구">
+      <div class="sidebar-scroll">
+        <section class="tools-section">
+          <div class="section-heading"><h2>편집 도구</h2></div>
+          <div class="tool-grid" role="group" aria-label="편집 도구">
+            <button data-tool="brush" class="tool active" aria-pressed="true" title="색칠 (B)"><svg><use href="#i-brush"/></svg><span>색칠</span><kbd>B</kbd></button>
+            <button data-tool="eraser" class="tool" aria-pressed="false" title="지우개 (E)"><svg><use href="#i-eraser"/></svg><span>지우개</span><kbd>E</kbd></button>
+            <button data-tool="pan" class="tool" aria-pressed="false" title="이동 (H)"><svg><use href="#i-hand"/></svg><span>이동</span><kbd>H</kbd></button>
+            <button data-tool="picker" class="tool" aria-pressed="false" title="색 추출 (I)"><svg><use href="#i-picker"/></svg><span>색 추출</span><kbd>I</kbd></button>
+          </div>
+        </section>
+        <section class="palette-section">
+          <div class="section-heading"><h2>색상 팔레트</h2><span id="active-color-code" class="mono">#5D9785</span></div>
+          <div id="party-palette" hidden><p id="party-palette-name" class="section-hint"></p><div id="party-shades" class="party-shades" role="group" aria-label="정당 명도 색상"></div><p class="setting-note">옅은색 3개 | 기본색 | 진한색 3개<br><span id="party-palette-note">선거구 색칠은 의석을 자동 배정합니다.</span></p><button id="party-base-toggle" class="text-button" aria-expanded="false" aria-controls="base-color-controls">정당 기본색 변경</button></div>
+          <div id="base-color-controls">
+          <div class="swatch-grid" id="swatches" aria-label="색상 선택"></div>
+          <div class="palette-expansion"><span id="palette-count">24색</span><button id="more-colors" class="text-button">더보기 +36</button><button id="collapse-colors" class="text-button" hidden>접기</button></div>
+          <div class="color-editor" aria-label="색상 값 직접 입력">
+            <label class="hex-color-row"><span id="custom-preview" class="color-value-preview" aria-hidden="true"></span><span>HEX</span><input id="color-hex" aria-label="HEX 색상" value="#5D9785" maxlength="7" spellcheck="false" autocomplete="off"></label>
+            <div class="rgb-color-row"><span>RGB</span><label>R<input id="color-r" aria-label="빨강 R" type="number" min="0" max="255" step="1" value="93"></label><label>G<input id="color-g" aria-label="초록 G" type="number" min="0" max="255" step="1" value="151"></label><label>B<input id="color-b" aria-label="파랑 B" type="number" min="0" max="255" step="1" value="133"></label></div>
+            <p id="color-error" class="color-error" role="status" hidden></p><button id="apply-color" class="button secondary">선택한 범례에 적용</button>
+          </div></div>
+        </section>
+        <section id="micro-map-controls" class="micro-map-controls" hidden>
+          <div class="section-heading"><h2>지도 설정</h2></div>
+          <button id="micro-region-borders" class="button secondary" aria-pressed="false">지역 경계 보기</button>
+          <button id="micro-election-borders" class="button secondary" aria-pressed="true">선거구 경계 보기</button>
+          <form id="micro-border-form" class="boundary-color-row"><button id="micro-border-preview" type="button" aria-label="선거구 경계 색상 선택" aria-haspopup="dialog"></button><input id="micro-border-color" aria-label="선거구 경계 색상 HEX" maxlength="7" spellcheck="false"><button class="text-button" type="submit">적용</button></form>
+          <label class="setting-row"><span>선거구 경계 두께</span><span class="area-input"><input id="micro-border-width" aria-label="선거구 경계 두께" type="number" min="0" max="8" step="0.05" value="0.65"><span>px</span></span></label>
+          <label class="setting-row"><span>지도 범례 표시</span><input id="micro-show-caption" type="checkbox" class="switch" checked></label>
+          <button id="micro-detail-paint" class="button secondary" aria-pressed="false">세부 색칠</button>
+          <p id="micro-paint-hint" class="setting-note"></p>
+          <button id="micro-clear-paint" class="text-button" hidden>지도 색칠만 비우기</button>
+        </section>
+        <section class="display-section">
+          <div class="section-heading"><h2>지도 설정</h2></div><label class="setting-row label-mode-row"><span>지도 보기·출력 범위</span><select id="map-view" aria-label="지도 보기·출력 범위"></select></label>
+          <label id="world-center-row" class="setting-row label-mode-row" hidden><span>세계 지도 중심</span><select id="world-center" aria-label="세계 지도 중심"><option value="europe">유럽 중심</option><option value="asia">아시아 중심</option></select></label>
+          <p id="map-detail-note" class="setting-note" hidden>축소하면 국경 위주로, 확대하면 세부 행정경계를 표시합니다. 세계 지도는 좌우로 이어집니다.</p>
+          <label class="setting-row label-mode-row"><span>지명 언어</span><select id="place-language" aria-label="지명 언어"><option value="ko">한국어</option><option value="en">English</option></select></label>
+          <label class="setting-row"><span>원어 표기 유지</span><input type="checkbox" id="native-names" class="switch"></label>
+          <p class="setting-note">지역 이름·행정구역 표기에 적용합니다. 검색은 한국어·영어·원어 모두 지원하며 직접 작성한 범례 이름은 유지합니다.</p>
+          <label class="setting-row"><span>범례 묶음 경계선</span><input type="checkbox" id="show-family-borders" checked class="switch"></label>
+          <label class="setting-row"><span>상위 행정경계</span><input type="checkbox" id="show-borders" checked class="switch"></label>
+          <label class="setting-row"><span>지역 경계선</span><input type="checkbox" id="show-region-borders" checked class="switch"></label>
+          <label class="setting-row label-mode-row"><span>색칠한 지역 표기</span><select id="label-mode" aria-label="색칠한 지역 표기"><option value="none">표시 안 함</option><option value="legend" selected>범례 이름</option><option value="family">1단계 범례 이름</option><option value="region">지역 이름</option><option value="both">범례 + 지역명</option></select></label>
+          <label class="setting-row label-mode-row"><span>범례 라벨 형태</span><select id="label-style" aria-label="범례 라벨 형태"><option value="curved">곡선</option><option value="straight">직선</option></select></label>
+          <label class="setting-row"><span>자간 자동 늘림</span><input type="checkbox" id="auto-spacing" checked class="switch"></label>
+          <label class="setting-row"><span>수동 자간</span><span class="area-input"><input id="label-tracking" aria-label="수동 자간" type="number" min="-20" max="300" step="1" value="6"><span>%</span></span></label>
+          <label class="setting-row"><span>라벨 바다 위로 연결</span><input type="checkbox" id="labels-over-water" checked class="switch"></label>
+          <label class="setting-row island-area-row"><span>섬 라벨 최소 면적</span><span class="area-input"><input id="island-min-area" aria-label="섬 라벨 최소 면적" type="number" min="0" max="10000" step="10" value="100" disabled><span>km²</span></span></label>
+          <label class="setting-row"><span>미지정 지역 이름</span><input type="checkbox" id="show-labels" class="switch"></label>
+          <label class="setting-row"><span>지역명 행정단위 생략</span><input type="checkbox" id="omit-suffix" class="switch"></label>
+          <label class="setting-row label-mode-row"><span>지도·범례·제목 글꼴</span><select id="label-font" aria-label="라벨 글꼴"></select></label>
+          <div class="local-font-tools">
+            <button id="load-system-fonts" class="button secondary">설치 글꼴 불러오기</button>
+            <div id="system-font-picker" hidden>
+              <input id="system-font-search" aria-label="설치 글꼴 검색" placeholder="글꼴 이름 검색" type="search">
+              <select id="system-font-list" aria-label="설치 글꼴 목록" size="5"></select>
+              <button id="use-system-font" class="button secondary">선택 글꼴 사용</button>
+            </div>
+            <button id="load-font-file" class="text-button">글꼴 파일 선택 | TTF / OTF / WOFF</button>
+            <input id="font-file" type="file" accept=".ttf,.otf,.woff" hidden>
+          </div>
+          <div id="font-preview" class="font-preview" aria-label="글꼴 미리보기">평택 · 안성권 Aa 123</div><p id="font-status" class="font-status" role="status">웹폰트 준비 중</p>
+          <div class="label-emphasis" role="group" aria-label="라벨 글자 스타일"><label><input id="label-bold" type="checkbox" aria-label="굵게"><b>B</b><span>굵게</span></label><label><input id="label-italic" type="checkbox" aria-label="기울임"><i>I</i><span>기울임</span></label></div>
+          <label class="setting-row"><span>글자 크기</span><span class="area-input"><input id="label-size" aria-label="글자 크기" type="number" min="25" max="300" step="5" value="100"><span>%</span></span></label>
+          <div class="label-color-row"><label for="label-color">글자 색상</label><input id="label-color" aria-label="글자 색상 HEX" placeholder="자동" maxlength="7" spellcheck="false"><button id="reset-label-color" class="text-button" aria-label="글자 색상 자동">자동</button></div>
+          <label class="setting-row"><span>외곽선 두께</span><span class="area-input"><input id="label-outline-width" aria-label="외곽선 두께" type="number" min="0" max="10" step="0.25" value="1.5"><span>px</span></span></label>
+          <div class="label-color-row"><label for="label-outline-color">외곽선 색상</label><input id="label-outline-color" aria-label="외곽선 색상 HEX" placeholder="자동" maxlength="7" spellcheck="false"><button id="reset-outline-color" class="text-button" aria-label="외곽선 색상 자동">자동</button></div>
+          <p class="setting-note typography-note">글자 크기는 자동 크기 대비 비율입니다. 직선·곡선 모두 자동 자간을 지원하며, 수동 자간을 바꾸면 자동 늘림이 꺼집니다. 외곽선 0은 테두리 없음입니다.</p>
+          <label class="setting-row"><span>범례 표시 및 이미지 포함</span><input type="checkbox" id="export-legend" checked class="switch"></label>
+          <fieldset id="world-inset-settings" class="world-inset-settings" hidden><legend>작은 국가 확대 지도</legend><label class="setting-row"><span>소안틸레스</span><input type="checkbox" data-inset-toggle="lesser-antilles" aria-label="소안틸레스 확대 보기" class="switch"></label><label class="setting-row"><span>서유럽</span><input type="checkbox" data-inset-toggle="western-europe" aria-label="서유럽 확대 보기" class="switch"></label><label class="setting-row"><span>태평양 군도</span><input type="checkbox" data-inset-toggle="pacific" aria-label="태평양 군도 확대 보기" class="switch"></label><label class="setting-row"><span>걸프</span><input type="checkbox" data-inset-toggle="gulf" aria-label="걸프 확대 보기" class="switch"></label><label class="setting-row"><span>아프리카 군도</span><input type="checkbox" data-inset-toggle="african-islands" aria-label="아프리카 군도 확대 보기" class="switch"></label><label class="setting-row"><span>기타 지역</span><input type="checkbox" data-inset-toggle="other" aria-label="기타 지역 확대 보기" class="switch"></label><p class="setting-note">지도 아래와 범례 사이에 표시합니다. 확대 칸에서도 직접 색칠할 수 있습니다. 각 칸의 숨기기는 이미지에서만 제외합니다. PNG / SVG 내보내기 시 전체 지도와 표시할 권역별 이미지를 별도 파일로 묶어 ZIP으로 저장합니다.</p></fieldset>
+          <div class="map-color-settings"><label class="setting-row"><span>바다 / 지도 배경색</span><input id="sea-color" aria-label="바다 색상 HEX" maxlength="7" spellcheck="false" placeholder="#FBFCF8"></label><button id="sea-color-reset" class="text-button">바다색 초기화</button><label class="setting-row"><span>미지정 육지색</span><input id="empty-color" aria-label="미지정 육지 색상 HEX" maxlength="7" spellcheck="false" placeholder="#DCE6DB"></label><button id="empty-color-reset" class="text-button">육지색 초기화</button></div><div id="export-region-settings" class="export-region-settings" hidden><label class="setting-row"><span>이미지 출력 권역</span></label><select id="export-region" aria-label="이미지 출력 권역"><option value="current">현재 지도 보기</option></select><p class="setting-note">저장할 PNG·SVG의 범위입니다. 편집 화면과 색칠은 유지합니다.</p></div><details class="caption-options"><summary>범례 캡션 설정</summary><label class="setting-row">제목<input id="caption-title" aria-label="범례 캡션 제목" maxlength="80" value="범례"></label><label class="setting-row">열 수<select id="caption-columns" aria-label="범례 캡션 열 수"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select></label><label class="setting-row">글자 크기<span class="area-input"><input id="caption-font-size" aria-label="범례 캡션 글자 크기" type="number" min="8" max="24" step="1" value="12"><span>px</span></span></label><p class="setting-note">대분류와 소분류를 묶어 정렬합니다. 세계지도에서는 남극 아래, 미시판도학에서는 지도 오른쪽에 표시합니다.</p></details>
+          <p class="setting-note">바다 연결을 끄면 독립된 섬에도 대범례 이름을 표시합니다. 최소 면적보다 작거나 글자가 들어갈 공간이 없으면 생략합니다. 면적은 단순화 경계 기준의 근삿값입니다. 바다 연결을 켜면 떨어진 섬까지 이름을 이을 수 있습니다. 다른 범례의 육지는 침범하지 않습니다.</p>
+        </section>
+        <button id="reset-button" class="reset-button"><svg><use href="#i-trash"/></svg> 지도 비우기</button>
+      </div>
+      <div class="sidebar-footer"><span class="mini-brand">p.</span><p>작은 색 하나로 시작하는<br><strong>나만의 동아시아.</strong></p><span class="footer-spark">✳</span></div>
+    </aside>
+    <section class="workspace" aria-label="지도 작업 공간">
+      <div class="workspace-heading">
+        <div class="project-info"><div class="project-title-row"><input id="project-title" aria-label="지도 제목" value="나의 동아시아 지도" maxlength="80"><svg class="title-edit"><use href="#i-edit"/></svg></div><p>지역을 채워, 나만의 판도를 그려보세요.</p></div>
+        <div class="project-actions"><button id="import-button" class="button secondary" title="저장한 JSON 프로젝트 불러오기"><svg><use href="#i-folder"/></svg><span>불러오기</span></button><button id="save-button" class="button secondary"><svg><use href="#i-download"/></svg><span>작업 저장</span></button><div class="export-wrap"><button id="export-button" class="button primary" aria-expanded="false"><svg><use href="#i-download"/></svg><span>이미지 내보내기</span><svg class="small"><use href="#i-chevron"/></svg></button><div id="export-menu" class="dropdown-menu" hidden><button data-export="png"><strong>PNG 이미지</strong><small>고해상도 | 바로 사용하기</small></button><button data-export="svg"><strong>SVG 벡터</strong><small>크기 제한 없이 선명하게</small></button></div></div></div>
+      </div>
+      <div id="outline-edit-bar" class="outline-edit-bar" hidden><span id="outline-edit-name"></span><span>클릭과 드래그로 포함 | 지우개나 우클릭으로 제외</span><button id="outline-edit-done" class="button secondary">영역 편집 마침</button></div>
+      <div id="map-presentation" class="map-presentation"><div class="map-shell" id="map-shell">
+        <div class="canvas-topbar">
+          <div class="map-breadcrumb"><svg><use href="#i-map"/></svg><span id="mode-name">대륙판도학</span><span class="breadcrumb-slash">/</span><span id="map-view-name">동아시아</span><span class="breadcrumb-slash">/</span><strong>판도</strong><span id="boundary-count" class="boundary-badge"></span></div>
+          <div class="history-actions"><button id="undo-button" class="icon-button" title="실행 취소 (Ctrl+Z)" aria-label="실행 취소" disabled><svg><use href="#i-undo"/></svg></button><button id="redo-button" class="icon-button" title="다시 실행 (Ctrl+Shift+Z)" aria-label="다시 실행" disabled><svg><use href="#i-redo"/></svg></button><span></span><button id="region-toggle" class="icon-button" title="지역 검색 및 목록" aria-label="지역 검색 및 목록" aria-expanded="false"><svg><use href="#i-search"/></svg></button></div>
+        </div>
+        <div class="map-viewport" id="map-viewport" data-tool="brush">
+          <svg id="map-svg" viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg" aria-label="동아시아 행정구역 색칠 지도"><defs id="province-clips"></defs><defs id="family-clips"></defs><defs id="label-clips"></defs><g id="map-transform"><g id="map-base" aria-hidden="true" style="pointer-events:none"></g><g id="territory-fills" aria-hidden="true" style="pointer-events:none"></g><g id="regions"></g><g id="region-boundaries" aria-hidden="true" style="pointer-events:none"></g><g id="province-borders" aria-hidden="true"></g><g id="family-borders" aria-hidden="true" style="pointer-events:none"></g><g id="election-boundaries" aria-hidden="true" style="pointer-events:none"></g><g id="outline-borders" aria-hidden="true" style="pointer-events:none"></g><g id="map-labels" aria-hidden="true"></g></g></svg>
+          <div class="north-arrow" aria-hidden="true"><span>N</span><svg width="22" height="38" viewBox="0 0 22 38"><path d="m11 5 7 24-7-5-7 5Z" fill="#6e8279"/><path d="M11 5v19l-7 5Z" fill="#d1dcd6"/></svg></div>
+        </div>
+        <div class="map-instruction" id="map-instruction"><span class="instruction-icon"><svg><use href="#i-brush"/></svg></span><div><strong id="instruction-title">어디부터 채워볼까요?</strong><span id="instruction-detail">왼쪽에서 색상을 고른 뒤, 지역을 클릭하세요.</span></div><button id="dismiss-tip" class="icon-button" aria-label="안내 닫기"><svg><use href="#i-close"/></svg></button></div>
+        <div class="zoom-controls"><button id="zoom-in" class="icon-button" aria-label="확대" title="확대 (+)"><svg><use href="#i-plus"/></svg></button><button id="zoom-reset" class="zoom-value" title="전체 지도 보기">100%</button><button id="zoom-out" class="icon-button" aria-label="축소" title="축소 (-)"><svg><use href="#i-minus"/></svg></button><span></span><button id="fit-button" class="icon-button" title="전체 지도 보기 (0)" aria-label="전체 지도 보기"><svg><use href="#i-fit"/></svg></button></div>
+        <div class="canvas-note">국가·지역마다 자료 기준일 상이 <span>|</span> Ctrl + 스크롤로 확대 / Space + 드래그로 이동</div>
+        <div id="map-tooltip" class="map-tooltip" hidden></div>
+        <div class="region-panel" id="region-panel" hidden>
+          <div class="region-panel-heading"><strong>지역 찾기</strong><button id="close-region-panel" class="icon-button" aria-label="지역 목록 닫기"><svg><use href="#i-close"/></svg></button></div>
+          <label class="search-field"><svg><use href="#i-search"/></svg><input id="region-search" placeholder="한국어 | English | 원어 검색" autocomplete="off" aria-label="지역 이름 검색"></label>
+          <select id="country-filter" aria-label="국가·지역 선택"><option value="">모든 국가·지역</option></select>
+          <select id="province-filter" aria-label="상위 행정구역 선택"><option value="">모든 상위 행정구역</option></select>
+          <button id="paint-province" class="button province-paint" disabled><svg><use href="#i-brush"/></svg> 선택한 행정구역 전체 색칠</button>
+          <p id="japan-basic-note" class="japan-basic-note" hidden>일본 기본 지도: 시·구·군 묶음. 정·촌 개별 경계는 미시판도학용으로 보관합니다.</p><div class="region-result-heading"><span id="result-count"></span><span>클릭하여 위치 보기</span></div><div id="region-results" class="region-results"></div>
+        </div>
+      </div>
+      <aside id="map-caption" class="map-caption" aria-label="지도 범례 캡션" hidden></aside></div>
+      <footer class="workspace-footer"><div class="save-status" id="save-status"><svg><use href="#i-check"/></svg><span>이 브라우저에 자동 저장됩니다</span></div><div class="progress-summary"><span><strong id="colored-count">0</strong> / <span id="region-total"></span><span id="progress-unit">개 지역</span></span><span class="progress-track"><span id="progress-fill"></span></span><strong id="colored-percent">0%</strong></div></footer>
+      <section id="world-insets" class="world-insets" aria-label="작은 국가 확대 지도" hidden></section>
+      <section class="legend-section legend-dock" aria-label="하단 범례 편집">
+        <div class="legend-dock-heading"><div><div class="legend-tab-heading"><h2 id="legend-title">범례</h2><div id="legend-tabs" role="tablist" aria-label="지도 범례와 선거 설계" hidden><button id="legend-tab" role="tab" aria-selected="true" aria-controls="legend-panel" tabindex="0">범례</button><button id="election-tab" role="tab" aria-selected="false" aria-controls="election-panel" tabindex="-1">선거구</button><button id="regions-tab" role="tab" aria-selected="false" aria-controls="regions-panel" tabindex="-1">권역</button><button id="seats-tab" role="tab" aria-selected="false" aria-controls="seats-panel" tabindex="-1">의석</button></div></div><p id="legend-hint" class="section-hint">글자를 클릭해 이름을 바꾸고 색상 칸을 눌러 색을 바꾸세요. 드래그로 소속과 순서를 바꾸면 각 항목이 칸에 맞춰 재배열됩니다. 최대 3단계입니다.</p></div><button id="add-group" class="text-button"><svg><use href="#i-plus"/></svg> 범례 추가</button></div>
+        <div id="workflow-navigation" class="workflow-navigation" hidden><button id="workflow-prev" class="button secondary">이전</button><span id="workflow-step"></span><button id="workflow-next" class="button primary">다음</button></div>
+        <div id="legend-panel" role="tabpanel" aria-labelledby="legend-tab" class="legend-dock-scroll"><div class="legend-toolbar"><label>정렬 기준<select id="legend-sort-key" aria-label="범례 정렬 기준"><option value="name">이름 (가나다 / ABC)</option><option value="regions">소속 프로빈스 수</option><option value="children">하위 범례 수</option></select></label><label>순서<select id="legend-sort-direction" aria-label="범례 정렬 방향"><option value="asc">오름차순</option><option value="desc">내림차순</option></select></label><label>대상<select id="legend-sort-scope" aria-label="범례 정렬 대상"><option value="all">모든 단계</option><option value="siblings">선택한 범례와 같은 소속</option></select></label><button id="legend-sort-apply" class="button secondary">정렬 적용</button><span id="legend-drag-status" role="status" aria-live="polite">항목 위에 놓으면 하위 범례 | 칸 밖으로 빼면 독립 범례 | 칸 사이에 놓으면 순서 변경</span></div><div id="legend-list" class="legend-list caption-editor" aria-label="범례 직접 편집"></div><div id="legend-inspector" class="legend-inspector"></div><div class="unfilled-row"><span class="empty-swatch"></span><span>미지정</span><span id="unfilled-count"></span></div>
+          <section class="outline-section" aria-labelledby="outline-title"><div class="outline-heading"><div><h3 id="outline-title">초국가 영역</h3><p class="section-hint">신성 로마 제국, 유럽 연합 등의 영역입니다. 기존 지역 색은 유지하고 합친 외곽선만 그립니다. 서로 겹쳐도 됩니다.</p></div><button id="add-outline" class="text-button"><svg><use href="#i-plus"/></svg> 영역 추가</button></div><div id="outline-list" class="outline-list"></div><p id="outline-empty" class="section-hint">영역을 추가한 뒤 범례에서 구성 지역을 가져오거나 지도에서 직접 지정하세요.</p></section>
+        </div>
+        <div id="election-panel" role="tabpanel" aria-labelledby="election-tab" hidden>
+          <div class="election-toolbar"><label class="search-field"><svg><use href="#i-search"/></svg><input id="election-search" type="search" aria-label="선거구·읍면동 검색" placeholder="선거구·시군구·읍면동 검색"></label><select id="election-sido" aria-label="선거구 시도 선택"><option value="">전국 모든 시도</option></select><span id="election-result-count" role="status"></span></div>
+          <p class="section-hint election-instructions">22대 총선 254개 선거구를 초기값으로 사용합니다. 읍면동을 선택해 다른 선거구로 옮기거나, 지도에서 편집할 선거구를 선택한 뒤 읍면동을 클릭·드래그하세요. 색칠과 라벨은 의석 배정과 분리됩니다.</p>
+          <div class="workflow-bulk"><strong id="election-selection-count">0개 읍면동 선택</strong><select id="election-move-target" aria-label="선택 읍면동의 이동 대상 선거구"></select><button id="election-move" class="button secondary">선택 읍면동 옮기기</button><button id="election-clear-selection" class="text-button">선택 해제</button><button id="election-add" class="button secondary">선거구 추가</button><button id="election-reset" class="text-button">22대 구성으로 초기화</button></div>
+          <div id="election-list" class="election-list"></div><button id="election-more" class="button secondary" hidden>선거구 더 보기</button>
+        </div>
+        <div id="regions-panel" role="tabpanel" aria-labelledby="regions-tab" hidden>
+          <p class="section-hint election-instructions">선택 사항입니다. 직접 만든 대권역에 선거구를 배정하면 의석 탭에서 권역별 정당 의석 수를 볼 수 있습니다. 비워 두고 다음 단계로 넘어가도 됩니다.</p>
+          <form id="region-add-form" class="workflow-bulk"><input id="region-new-name" aria-label="새 권역 이름" placeholder="예: 서울 | 수도권 | 동남권" maxlength="60" required><button class="button secondary" type="submit">권역 추가</button></form>
+          <div id="electoral-region-list" class="election-list"></div>
+          <div class="election-toolbar"><input id="region-district-search" type="search" aria-label="권역에 배정할 선거구 검색" placeholder="선거구·시도 검색"><span id="region-district-count" role="status"></span></div>
+          <div class="workflow-bulk"><select id="region-bulk-target" aria-label="검색 결과 전체를 배정할 권역"><option value="">배정할 권역 선택</option></select><button id="region-bulk-assign" class="button secondary" type="button" disabled>검색 결과 전체 배정</button></div>
+          <p class="section-hint">더 보기에 숨겨진 선거구까지 검색 결과 전체를 배정합니다.</p>
+          <div id="region-district-list" class="workflow-assignment-list"></div><button id="region-district-more" class="button secondary" hidden>선거구 더 보기</button>
+        </div>
+        <div id="seats-panel" role="tabpanel" aria-labelledby="seats-tab" hidden>
+          <div class="election-toolbar"><p class="section-hint">지도에서 선거구를 칠하면 선택한 정당에 의석이 배정됩니다. ‘세부 색칠’을 켰을 때는 읍면동 색칠만 바뀌고 의석은 유지됩니다. 의석은 아래 목록에서도 배정할 수 있습니다.</p><button id="proportional-settings" class="button secondary" aria-pressed="false">권역별 비례대표제 설정</button></div>
+          <form id="party-add-form" class="workflow-bulk"><input id="party-new-name" aria-label="새 정당 이름" placeholder="새 정당 이름" maxlength="60" required><button class="button secondary" type="submit">정당 추가</button></form>
+          <div id="party-list" class="party-list" aria-label="정당 범례"></div>
+          <div id="seat-summary" class="seat-summary" role="status"></div><p class="section-hint"><span id="proportional-mode"></span> | 아래 표에서 정당별 비례대표 의석 수를 입력하세요.</p><div id="regional-seat-summary"></div>
+          <div class="election-toolbar"><input id="seat-district-search" type="search" aria-label="의석을 배정할 선거구 검색" placeholder="선거구·시도·권역 검색"><span id="seat-district-count"></span></div>
+          <div id="seat-district-list" class="workflow-assignment-list"></div><button id="seat-district-more" class="button secondary" hidden>선거구 더 보기</button>
+        </div>
+      </section>
+    </section>
+  </main>
+  <dialog id="district-add-dialog" aria-labelledby="district-add-title"><form id="district-add-form"><h2 id="district-add-title">선거구 추가</h2><label>이름<input id="district-new-name" aria-label="새 선거구 이름" maxlength="60" required placeholder="예: 은평구 병"></label><label>시도<select id="district-new-sido" aria-label="새 선거구 시도"><option value="">시도 미지정</option></select></label><p id="district-add-selection" class="section-hint"></p><div class="dialog-actions"><button type="button" id="district-add-cancel" class="button secondary">취소</button><button type="submit" class="button primary">선거구 만들기</button></div></form></dialog>
+  <div id="quick-color-picker" class="quick-color-picker" role="dialog" aria-label="범례 색상 빠른 변경" tabindex="-1" hidden>
+    <div class="quick-color-heading"><h2 id="quick-color-name">범례 색상</h2><button id="close-quick-color" class="icon-button" aria-label="빠른 색상 변경 닫기"><svg><use href="#i-close"/></svg></button></div>
+    <div id="quick-swatches" class="swatch-grid" aria-label="빠른 색상 팔레트"></div>
+    <div class="palette-expansion"><span id="quick-palette-count">24색</span><button id="quick-more-colors" class="text-button">더보기 +36</button><button id="quick-collapse-colors" class="text-button" hidden>접기</button></div>
+    <div class="color-editor">
+      <label class="hex-color-row"><span id="quick-color-preview" class="color-value-preview" aria-hidden="true"></span><span>HEX</span><input id="quick-color-hex" aria-label="빠른 HEX 색상" maxlength="7" spellcheck="false" autocomplete="off"></label>
+      <div class="rgb-color-row"><span>RGB</span><label>R<input id="quick-color-r" aria-label="빠른 빨강 R" type="number" min="0" max="255" step="1"></label><label>G<input id="quick-color-g" aria-label="빠른 초록 G" type="number" min="0" max="255" step="1"></label><label>B<input id="quick-color-b" aria-label="빠른 파랑 B" type="number" min="0" max="255" step="1"></label></div>
+      <p id="quick-color-error" class="color-error" role="status" hidden></p><button id="apply-quick-color" class="button secondary">이 범례에 적용</button>
+    </div>
+  </div>
+  <button id="sidebar-backdrop" class="sidebar-backdrop" aria-label="편집·설정 닫기" hidden></button>
+  <input type="file" id="import-file" accept=".json,application/json" hidden>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="info-dialog"><div class="dialog-heading"><span class="dialog-label">지도 정보</span><button data-close-dialog class="icon-button" aria-label="닫기"><svg><use href="#i-close"/></svg></button></div><h2>한 칸씩, 나만의 판도.</h2><p>행정구역을 클릭하거나 드래그해 같은 색으로 칠하세요. 작은 지역은 지도를 확대하거나 지역 검색으로 찾을 수 있어요.</p><div class="shortcut-grid"><span>색칠 / 지우개</span><span><kbd>B</kbd> / <kbd>E</kbd></span><span>이동 / 색 추출</span><span><kbd>H</kbd> / <kbd>I</kbd></span><span>실행 취소 / 다시 실행</span><span><kbd>Ctrl Z</kbd> / <kbd>Ctrl Shift Z</kbd></span><span>임시 이동</span><kbd>Space + 드래그</kbd></div><p>작업은 현재 브라우저에 자동 저장됩니다. <strong>작업 저장</strong>으로 JSON 파일을 보관하고 <strong>불러오기</strong>로 이어서 편집하세요. 이미지는 ‘지도 보기·출력 범위’에서 선택한 전체 영역을 내보냅니다. 다른 국가의 색칠도 작업 파일에 함께 보관됩니다.</p><div class="data-credit">
+<strong id="dataset-summary">대륙판도학 | 동아시아</strong>
+<p id="dataset-description"></p>
+<p>남한: SGIS·행정안전부 / vuski / mapcn-kr | CC BY 4.0 | 2026.07.01<br>북한: WFP·OCHA ROAP / geoBoundaries | CC BY 3.0 IGO | 2019. 대도시 내부 구역 일부 미분리.<br>중국: CTAmap / cn-atlas | MIT·ISC | 2023. 지급행정구 333개에 직할시·성 직할 현급 지역·홍콩·마카오를 더했습니다.<br>몽골: OpenStreetMap / geoBoundaries | ODbL 1.0 | 2017. 21개 아이막과 울란바토르.<br>일본: 国土数値情報（行政区域データ、2021年）（国土交通省）をもとに加工 / SmartNews SMRI. 기본 지도는 일반 시 772개·정령지정도시 구 175개·도쿄 특별구 23개·군/도서지청 묶음 379개입니다. 정·촌 개별 경계는 미시판도학용으로 보관합니다.<br>대만: 內政部國土測繪中心 2025 直轄市、縣（市）界線（1140318） | 정부자료개방허가 1.0.</p>
+<p>남북 접경 자료 사이의 닫힌 빈틈 8곳을 인접 지역에 연결했습니다. 경계 단순화와 출처 간 중첩 정리를 거친 개인용 시각화 자료입니다. 출처가 서로 다른 섬 경계의 중첩 우선순위는 영유권 주장을 뜻하지 않습니다.</p>
+<a href="./data/LICENSE-EAST-ASIA.md" target="_blank" rel="noopener noreferrer">경계 출처·라이선스·가공 내역 ↗</a>
+<p>지명: Wikidata | CC0 / Geolonia 住所データ | CC BY 4.0 (가공). <a href="./data/localization/README.md" target="_blank" rel="noopener noreferrer">지명 출처·독음 가공 내역 ↗</a></p>
+</div><button data-close-dialog class="button primary dialog-done">그리기 시작하기</button></dialog>
+  <dialog id="confirm-dialog"><h2 id="confirm-title">지도를 비울까요?</h2><p id="confirm-description">모든 지역의 색상이 지워집니다. 실행 취소로 되돌릴 수 있어요.</p><div class="dialog-actions"><button id="confirm-cancel" class="button secondary">취소</button><button id="confirm-ok" class="button primary">지도 비우기</button></div></dialog>
+</body>
+</html>

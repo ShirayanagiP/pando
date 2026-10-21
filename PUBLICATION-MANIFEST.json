@@ -1,0 +1,479 @@
+{
+  "format": 1,
+  "scope": [
+    "macro-world-europe",
+    "macro-world-asia",
+    "continental-eastasia",
+    "micro-korea"
+  ],
+  "excluded": [
+    "personal saves and exports",
+    "game-derived maps",
+    "credentials and local configuration",
+    "local servers",
+    "bulk upstream downloads"
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 2728,
+      "sha256": "281c2c159f520752a5fcf8b91d1d4a03160b33960d393185ebfbff0a702fcbe0"
+    },
+    {
+      "path": ".nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "PRIVATE_MAPS.md",
+      "bytes": 3137,
+      "sha256": "3814e27a204e5d069904d23e8a595c7ad6a3e2838dc6edda37936eacb47ee3cb"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2035,
+      "sha256": "9d54f83d9be67e251582dcf5f09c163d0150e2d86a237cb27b3d26f51e0b0c15"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 2529,
+      "sha256": "88467f7e9b9d9f8ca10aee2d8f31b99cac1ee43187534b2d96b1562bf69a01b3"
+    },
+    {
+      "path": "app.js",
+      "bytes": 109282,
+      "sha256": "73f1b04179da6118332894043d062fe2eb97b79f532ccef2f299649215c322fc"
+    },
+    {
+      "path": "cjk-font-data.js",
+      "bytes": 9272766,
+      "sha256": "fc8ebf7db5c653abbbdd9cca0ac02a6e9b7cc46cd95c9a76d2e6cf737c3899e7"
+    },
+    {
+      "path": "color-tools.js",
+      "bytes": 1724,
+      "sha256": "68379e18107cea345a2bfe86dc11e5cda324af96484be2d5f99b2e2733975216"
+    },
+    {
+      "path": "data/LICENSE-DATA",
+      "bytes": 433,
+      "sha256": "09a3d1eed1c9d3da9be5e9152e451e1c936c44f272938d1cd5f9d1200a3c8bff"
+    },
+    {
+      "path": "data/LICENSE-EAST-ASIA.md",
+      "bytes": 14442,
+      "sha256": "cfb6229bae9e9005ead73f861412781923c1e73b7a5fc417d551bbe40294b235"
+    },
+    {
+      "path": "data/LICENSE-KOREA-MICRO.md",
+      "bytes": 4264,
+      "sha256": "a87325904970c069e3505b8421e85e699cdca8f12db68f37264e6f80e133096f"
+    },
+    {
+      "path": "data/LICENSE-NORTH-KOREA.md",
+      "bytes": 2432,
+      "sha256": "e86c8e263a07dd107a36eafc3a217eb3a087e24d391c41a9e89d69b73ecdfdab"
+    },
+    {
+      "path": "data/LICENSE-WORLD.md",
+      "bytes": 12251,
+      "sha256": "29123ea33bc69c62f466c269a65d78269c3e09b093a77b8d8dec82bb94499800"
+    },
+    {
+      "path": "data/README.md",
+      "bytes": 1033,
+      "sha256": "440c4e19ff6efba846e51cd8c9498c06129347783929d26677572e86f4493ed8"
+    },
+    {
+      "path": "data/external/china/LICENSE-upstream.txt",
+      "bytes": 1079,
+      "sha256": "7333bf8e2e80c2ae66ac1b98cc6be04b390a4cf73d105d3c06ca10ef44e124d7"
+    },
+    {
+      "path": "data/external/china/provenance.json",
+      "bytes": 3591,
+      "sha256": "cb67ca2f62445db21041acae2d568b87f97b5de62da917a3f9ccafe94ae1b6bb"
+    },
+    {
+      "path": "data/external/china/upstream-2023-LICENSE",
+      "bytes": 1079,
+      "sha256": "7333bf8e2e80c2ae66ac1b98cc6be04b390a4cf73d105d3c06ca10ef44e124d7"
+    },
+    {
+      "path": "data/external/japan/LICENSE.md",
+      "bytes": 1319,
+      "sha256": "779c6f3302faecc8c18ffef03968f042c3b7d6dd948460a6525ad1e7798e80ac"
+    },
+    {
+      "path": "data/external/japan/SOURCE-README.md",
+      "bytes": 8932,
+      "sha256": "4198410a2e910df977b78ac95d0860aecee5a8cedf92ab22c76f8dc83e5c270e"
+    },
+    {
+      "path": "data/external/japan/basic-metadata.json",
+      "bytes": 871,
+      "sha256": "94bd8edd888e23a638060c891d685694f3f2a25fcda0f4d69570e5ccfac0900d"
+    },
+    {
+      "path": "data/external/japan/metadata.json",
+      "bytes": 3308,
+      "sha256": "271cba92005ae9a641625ab82c082f340471519e3852378d85f80fee24994503"
+    },
+    {
+      "path": "data/external/korea-micro/LICENSE-ADM-DATA.txt",
+      "bytes": 2757,
+      "sha256": "d892791d5ba176e3bb7cc178937b26d3b33e2ad19da581af168c9e48428ba507"
+    },
+    {
+      "path": "data/external/korea-micro/LICENSE-ELECTION.txt",
+      "bytes": 1072,
+      "sha256": "9ea1088a7d49b00876a8cf1143491953756ae0b37f7d9c691e0c69fc9182082d"
+    },
+    {
+      "path": "data/external/korea-micro/provenance.json",
+      "bytes": 983,
+      "sha256": "cc2ee5d284354bc3ce01b6beb9e85ede93df08653e36f5c2a5c09a55202d1b53"
+    },
+    {
+      "path": "data/external/korea-micro/upstream.json",
+      "bytes": 285,
+      "sha256": "38607d904ca70e7241cc0e19fd2fee63dc26d5d6c9e1ae8c6cec0421ef880524"
+    },
+    {
+      "path": "data/external/mongolia/README-SOUMS.md",
+      "bytes": 3349,
+      "sha256": "3e40a1223cd53599be5927cd1f3e0f6282afc12a3397a7a71e0bb6f2d20304f6"
+    },
+    {
+      "path": "data/external/mongolia/geoboundaries-metadata.json",
+      "bytes": 1744,
+      "sha256": "d80a2129f5e8e9fda98282f0e4ee46fce99b006091d82735ce6a52ff3f8d5f6f"
+    },
+    {
+      "path": "data/external/mongolia/provenance.json",
+      "bytes": 360,
+      "sha256": "70a49eea6b77fefb348d5c896eba3411253da09f175af2288e6bac1245a7de11"
+    },
+    {
+      "path": "data/external/mongolia/soums-geoboundaries-metadata.json",
+      "bytes": 1960,
+      "sha256": "d083d911dfda793abc13b3e4c16f7d293691b7851f42085a51cfd11f98ac60ee"
+    },
+    {
+      "path": "data/external/mongolia/soums-provenance.json",
+      "bytes": 7573,
+      "sha256": "35abf582aa112bb36d433c8313aa5b30e0e86af709967e6f292efaf26ff4a114"
+    },
+    {
+      "path": "data/external/russia/LICENSE-UNICODE.txt",
+      "bytes": 2033,
+      "sha256": "b4c0ae8ef04f7059f96ce5bbe0467f9fe6f6d81bbe13517701dfeb961fb4d0b6"
+    },
+    {
+      "path": "data/external/russia/README.md",
+      "bytes": 4894,
+      "sha256": "a9a634bb7f507547017c285befc512146abd57bdf9bded0ea551184370630fb4"
+    },
+    {
+      "path": "data/external/russia/adm1-metadata.json",
+      "bytes": 1759,
+      "sha256": "0e6a1c4291cc48a548a5ee25a3e105b89be2424f3480bf963cdc17ffa3b1a4f6"
+    },
+    {
+      "path": "data/external/russia/adm2-metadata.json",
+      "bytes": 1713,
+      "sha256": "8e5009a03a3929e1f168b4bcc867fc3f5bed43ce0dbaca3c4372a08da0d400c5"
+    },
+    {
+      "path": "data/external/russia/provenance.json",
+      "bytes": 1911,
+      "sha256": "2b087abed15f2325207ae746bd463906b39f5921a6ef418a461614d56cbfe640"
+    },
+    {
+      "path": "data/external/taiwan/geoboundaries-metadata.json",
+      "bytes": 1742,
+      "sha256": "156308c69c7754006d7962a4fd6eeea6fa5ca27c9a9c48f97b29a2e0274cca51"
+    },
+    {
+      "path": "data/external/taiwan/provenance.json",
+      "bytes": 367,
+      "sha256": "2d99423b609ce38630803a1fcaef8e003d2b4bdc72006e9a935623062605d54b"
+    },
+    {
+      "path": "data/external/world/LICENSE-SOURCES.md",
+      "bytes": 11244,
+      "sha256": "6b26d7454a5caa6286e103e93f56d08179e6949ad77608716530d1e08d5de476"
+    },
+    {
+      "path": "data/external/world/README-SMALL-ISLANDS.md",
+      "bytes": 5572,
+      "sha256": "8b354f55ae99acb449f1b79a7abbcdcba2c92bbefd7e47e9f8eee965af3243ce"
+    },
+    {
+      "path": "data/external/world/latvia-2026-source-metadata.json",
+      "bytes": 1280,
+      "sha256": "f10f826edd93be31e457446c6209203b9c8ff3c28293286a47cb56b887d86cd6"
+    },
+    {
+      "path": "data/external/world/metadata.json",
+      "bytes": 12842,
+      "sha256": "277aa49f062f8dfe6a397f07cc9b34c2cb21f60a954fecbe04c4534d22ba1f1b"
+    },
+    {
+      "path": "data/external/world/natural-earth-tag.json",
+      "bytes": 408,
+      "sha256": "376ecd320f02cb3b1b93d9dadf7c3a97e7427bc9345f91c00309792f2b8d2c3b"
+    },
+    {
+      "path": "data/external/world/nepal-adm1-metadata.json",
+      "bytes": 1896,
+      "sha256": "4f5cdb72ad5590faee2b03474fbd1d024c82db151b3d6060d170a66487514fee"
+    },
+    {
+      "path": "data/external/world/provenance.json",
+      "bytes": 5612,
+      "sha256": "31a21520cee8e3a26661f4b9aab3b0fe43a774b386195541f181a3eede2acb76"
+    },
+    {
+      "path": "data/localization/README.md",
+      "bytes": 3908,
+      "sha256": "53224eb4a99f1176a3c151c0a4f2a98ca58dad9974721e75d8a99cf918bc3187"
+    },
+    {
+      "path": "data/localization/provenance.json",
+      "bytes": 2362,
+      "sha256": "4917fc21e471b4617dcc8ef0b6414b0bfda954799e1413b10c2901595dcb36c3"
+    },
+    {
+      "path": "data/odbl/README.md",
+      "bytes": 1394,
+      "sha256": "2133a9b5b556d69eb0d8e65627bc3a8f4f21b2fdc149eecb6c43b2576c25a18b"
+    },
+    {
+      "path": "data/odbl/map-data.js-russia.json",
+      "bytes": 4800986,
+      "sha256": "f98f4074c85d6a583571df2096e9580e80136925e74315a26c05436039f4fb3c"
+    },
+    {
+      "path": "data/odbl/world-asia-mongolia.json",
+      "bytes": 105575,
+      "sha256": "a8b0ad2eb245c7c259a1d8d0010cafeac9c703b1d999f8ebb31c01bec478c220"
+    },
+    {
+      "path": "data/odbl/world-mongolia.json",
+      "bytes": 105571,
+      "sha256": "aaa8f6b44bae7014271329d13211ea5e9fd78560669e3a122216e18be978e7d7"
+    },
+    {
+      "path": "dataset-loader.js",
+      "bytes": 3731,
+      "sha256": "d8f0a7535a3dbb1355b0631ff6b56fa944c9a07562409a9e954ff7b7f086fcd5"
+    },
+    {
+      "path": "export-files.js",
+      "bytes": 1860,
+      "sha256": "d492276be5ec0755baed35ad9eb7a320f3eff37e2ff901f814677c0856904103"
+    },
+    {
+      "path": "export-regions.js",
+      "bytes": 3646,
+      "sha256": "fab42a226abf7234954888ee0cb284a7d2a2ffe2014fdbda2fa794383f4a8736"
+    },
+    {
+      "path": "favicon.svg",
+      "bytes": 302,
+      "sha256": "af1caa652de44b4f4b716f36180ed8839ee34a34c394ada82a4ecccfa1b30c51"
+    },
+    {
+      "path": "font-data.js",
+      "bytes": 6178470,
+      "sha256": "072a386306973271bc55cab29500e937f6c1ef49ce82ef4466a91b6598e95707"
+    },
+    {
+      "path": "fonts/dohyeon-OFL.txt",
+      "bytes": 4347,
+      "sha256": "de5ff32211a4340b01477af39ee339d639438955e409f79b666d4b9207f3c92c"
+    },
+    {
+      "path": "fonts/gowunbatang-OFL.txt",
+      "bytes": 4397,
+      "sha256": "49a57cc769fa9affd6eefb9070a61e3d3f6b757c97cafb15848bc6d1c81acc78"
+    },
+    {
+      "path": "fonts/gowundodum-OFL.txt",
+      "bytes": 4395,
+      "sha256": "a7c73f9521cd646bbdfb6684c99a62311bbd7bce11898dc11ef0b3c69eda1aca"
+    },
+    {
+      "path": "fonts/noto-cjk-OFL.txt",
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    {
+      "path": "fonts/pretendard-OFL.txt",
+      "bytes": 4816,
+      "sha256": "82e9c8a4b203261f10ddba1296422d64914ff3d4b7bd8a12896d03f0f088d70a"
+    },
+    {
+      "path": "fonts/world/OFL.txt",
+      "bytes": 4377,
+      "sha256": "0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb"
+    },
+    {
+      "path": "fonts/world/README.md",
+      "bytes": 1724,
+      "sha256": "96c744fc446cfc6c2a490279260862647c620d81da8bc02cb906df0186b68d10"
+    },
+    {
+      "path": "fonts/world/provenance.json",
+      "bytes": 6333,
+      "sha256": "b548e94c8632e527efa104ad607121259f9e5203ec9fa291caba311494ff68c9"
+    },
+    {
+      "path": "game-campaign.js",
+      "bytes": 2376,
+      "sha256": "8969158b6920200aceaed260895701ec8b8c2ff6b345a70da810a89338bda96a"
+    },
+    {
+      "path": "index.html",
+      "bytes": 43514,
+      "sha256": "9d91c0c17596263279cf660b9c9946485557012a4360c6c2311062ecd825d124"
+    },
+    {
+      "path": "label-layout.js",
+      "bytes": 10290,
+      "sha256": "be1633b6cae4e52fb983682470cdc2aa7e216cd39532a6f11762c403ba2f627c"
+    },
+    {
+      "path": "legend-order.js",
+      "bytes": 3711,
+      "sha256": "8fd4bd5a8cf0f195f7a827f373e7402bd734e19dee03ab74a6d86044bc0ebe35"
+    },
+    {
+      "path": "legend-tree.js",
+      "bytes": 2145,
+      "sha256": "0962f588dd4385b1f42fde92346d81115ed31359f23c412c34e24681cd6cbfb2"
+    },
+    {
+      "path": "map-captions.js",
+      "bytes": 13013,
+      "sha256": "4ed1bb88f366c3185afa4e99ce38e7a76b8ca307e3bd131a365d450315fb24d9"
+    },
+    {
+      "path": "map-catalog.js",
+      "bytes": 1717,
+      "sha256": "a3d2d3bc3859f841b2e71feb4476886e76898176032df3e16cf225ca64f81253"
+    },
+    {
+      "path": "map-data.js",
+      "bytes": 35736466,
+      "sha256": "e1f785ba1a150f3f8e7331049436567fb16294f7ec88cda8c7853c8590724f27"
+    },
+    {
+      "path": "map-renderer.js",
+      "bytes": 5494,
+      "sha256": "f56c24df9e3e0ffda6cc499994b01761dd803e9f9ea26de45e60640c53111d66"
+    },
+    {
+      "path": "micro-elections.js",
+      "bytes": 18086,
+      "sha256": "55fc8da1879c4ab774e72d608fc103e1fc78718cf7cfcf1e13a3a845f3b96866"
+    },
+    {
+      "path": "micro-map-data.js",
+      "bytes": 34580430,
+      "sha256": "f6dd7bebe83c94cc6206f3dc90341ab37023dbec72a4bec5f41f902778ea1ea7"
+    },
+    {
+      "path": "micro-workflow.js",
+      "bytes": 26618,
+      "sha256": "0a24b9786ef3bea7c063f22d8a9dc6ab03c905c35115a90b26176f31228e733e"
+    },
+    {
+      "path": "place-names-data.js",
+      "bytes": 1351084,
+      "sha256": "5a326568b1e48adca3ddda7fe132e68b283c76828d8bdaa45debe8c8ac948761"
+    },
+    {
+      "path": "place-names.js",
+      "bytes": 4613,
+      "sha256": "4c6b538450a1793cce077e0572f837d60c94d5d7e5dea13ddec2ad16a9a97ee9"
+    },
+    {
+      "path": "private-map-packs.js",
+      "bytes": 9129,
+      "sha256": "503a025aa69fc95a6e87cd67342c1cbae0f8e8f09756a62b698cfdc0257a9736"
+    },
+    {
+      "path": "private-map-ui.js",
+      "bytes": 3660,
+      "sha256": "1e3566354fc70338d8668c3143dc1f352bd62c15df6088682686877b56961850"
+    },
+    {
+      "path": "private-maps.css",
+      "bytes": 1125,
+      "sha256": "dcb4e184ead98c39507d00d9802941e459d5d3500cc1a14a9086694f57871d74"
+    },
+    {
+      "path": "project-model.js",
+      "bytes": 17926,
+      "sha256": "bf72951427bf008439fd1003ddc3e3c221bd3a916631a15a67bd83d451b4ea58"
+    },
+    {
+      "path": "project-svg.js",
+      "bytes": 14544,
+      "sha256": "7b0c4c048bb2ccdec1e4060cac2e0237b7546fc9813b0753c979812197f25b8c"
+    },
+    {
+      "path": "region-search.js",
+      "bytes": 7073,
+      "sha256": "a64c936f830244db8d1a0a72400084c0e91b55185feaef1670ad4276bba07879"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 57162,
+      "sha256": "1c529f02af78a94e8bf908692e140260ab1f17bb3db1ef5bf4ab016efe4f9edc"
+    },
+    {
+      "path": "territory-geometry.js",
+      "bytes": 21551,
+      "sha256": "d089bfc720dafd50c298756c0e1ce1a824de0859dc941580752977fa96a4607b"
+    },
+    {
+      "path": "vendor/opentype-LICENSE.txt",
+      "bytes": 1085,
+      "sha256": "a5b87c9bc191e7f9c06b07bd7cbbed3ed846dfdb50e859484b2c245aa1ab2e61"
+    },
+    {
+      "path": "vendor/opentype.min.js",
+      "bytes": 171001,
+      "sha256": "c0f9c7ca85e18075a8819e5fe2dee6e1d535f9a2269f5314f36cce94a183adba"
+    },
+    {
+      "path": "webfonts.js",
+      "bytes": 9673,
+      "sha256": "a0d6fc8379b94089b7e5682745cd89f4dfc8b0e833bb6d5d39256798af2de387"
+    },
+    {
+      "path": "world-asia-map-data.js",
+      "bytes": 31405967,
+      "sha256": "f1cbbb349f6725a296e8c7e1123e9257985c8db78ccb1cf38f857e6bbed342e8"
+    },
+    {
+      "path": "world-font-data.js",
+      "bytes": 157919,
+      "sha256": "df00716659901bd71e994c669bdb1a81ec6f580ee9a4b5f04023b387200a39e0"
+    },
+    {
+      "path": "world-insets.js",
+      "bytes": 9629,
+      "sha256": "1c3d46e051749de038eadfd3422bf764ea682ac6b77dd5e755f0ace15f02f5ae"
+    },
+    {
+      "path": "world-map-data.js",
+      "bytes": 31758626,
+      "sha256": "baedb75e32b8cbff2cdc558caa59a261fecf5e177522075a625460a6fd33e276"
+    }
+  ],
+  "manifestNote": "This manifest lists every release file except itself."
+}

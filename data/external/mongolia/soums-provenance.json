@@ -1,0 +1,204 @@
+{
+  "country": "mongolia",
+  "level": "ADM2",
+  "boundaryDate": "2021",
+  "retrievedAt": "2026-10-20",
+  "license": "Creative Commons Attribution 3.0 IGO (CC BY 3.0 IGO)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0/igo/",
+  "attribution": "National Statistical Office of Mongolia / OCHA ROAP; standardized by geoBoundaries",
+  "geometry": {
+    "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MNG/ADM2/geoBoundaries-MNG-ADM2.geojson",
+    "file": "soums-source.geojson",
+    "sha256": "dc4ffaa394bfd6a5d278bea15d8c302cbce38d8650b8b4859862bacb1f63a91f",
+    "boundaryId": "MNG-ADM2-93677404",
+    "commit": "9469f09"
+  },
+  "namesAndCodes": {
+    "url": "https://services-ap1.arcgis.com/QIJaUt9oyULFXfLr/ArcGIS/rest/services/mng_admbnda_adm2_nso_20201019/FeatureServer/0/query?where=1%3D1&outFields=%2A&outSR=4326&f=geojson",
+    "file": "soums-nso-names-source.geojson",
+    "sha256": "c27ae477804c5954c4db7cec76093c62baea6c56c8f5aedf7ad95af165ad0e11",
+    "publisher": "NSO Mongolia / OCHA ROAP",
+    "nativeField": "ADM2_MN",
+    "englishField": "ADM2_EN",
+    "codeField": "ADM2_PCODE",
+    "validOn": "2020-10-19"
+  },
+  "upstreamDataset": "https://data.humdata.org/dataset/mongolia-administrative-boundaries-polygon-polyline",
+  "koreanNames": {
+    "file": "soums-korean-transcriptions.txt",
+    "sha256": "2bb9789c124d08a4f3360408d2e5c95b05d5a1ac81c344214ff19c2ef7ac723a",
+    "method": "Manually transcribed Mongolian Cyrillic NSO names into readable Hangul; search/display aids, not official Korean names. No native-name fallback.",
+    "count": 339
+  },
+  "englishNames": "NSO Latin names with reversible c→ts, x→kh, o'→ö, u'→ü normalization; unmodified NSO forms retained in aliases.",
+  "method": [
+    "Keep geoBoundaries WGS84 polygons unchanged; no simplification, buffers, or filling.",
+    "Join NSO native names and stable P-codes by maximum intersection-over-union; require unique 339-to-339 matches and IoU > 0.99999.",
+    "Map parent by exact NSO ADM1_MN name to existing 22 macro aimag IDs.",
+    "Use MN-S- plus four-digit NSO P-code as stable IDs, separate from macro IDs.",
+    "Keep the original 2017 macro regions.geojson unchanged."
+  ],
+  "featureCount": 339,
+  "soums": 330,
+  "capitalDistricts": 9,
+  "parentCount": 22,
+  "minNameJoinIoU": 0.9999993721105236,
+  "minFractionInsideAssignedMacroParent": 0.6979069435572595,
+  "macroCoverageFraction": 0.9995460917365867,
+  "fractionInsideMacroCountry": 0.9997323855273823,
+  "interFeatureOverlapSquareDegrees": 0,
+  "macroParentDifferencesBelow90Percent": [
+    {
+      "id": "MN-S-1101",
+      "sourceId": "93677404B2463849994891",
+      "sourceCode": "MN1101",
+      "sourceName": "Baganuur",
+      "nativeName": "Багануур",
+      "provinceId": "MN-1",
+      "nameGeometryIoU": 0.99999999683,
+      "parentAreaFraction": 0.746913344279
+    },
+    {
+      "id": "MN-S-1104",
+      "sourceId": "93677404B94518670866672",
+      "sourceCode": "MN1104",
+      "sourceName": "Bagaxangai",
+      "nativeName": "Багахангай",
+      "provinceId": "MN-1",
+      "nameGeometryIoU": 0.999999995428,
+      "parentAreaFraction": 0.70017410518
+    },
+    {
+      "id": "MN-S-6101",
+      "sourceId": "93677404B54522359924126",
+      "sourceCode": "MN6101",
+      "sourceName": "Bayan-O'ndor",
+      "nativeName": "Баян-Өндөр",
+      "provinceId": "MN-035",
+      "nameGeometryIoU": 0.999999995601,
+      "parentAreaFraction": 0.805160445857
+    },
+    {
+      "id": "MN-S-4119",
+      "sourceId": "93677404B81168831538061",
+      "sourceCode": "MN4119",
+      "sourceName": "Bayandelger",
+      "nativeName": "Баяндэлгэр",
+      "provinceId": "MN-047",
+      "nameGeometryIoU": 0.999999997463,
+      "parentAreaFraction": 0.89159392562
+    },
+    {
+      "id": "MN-S-4310",
+      "sourceId": "93677404B52017503801889",
+      "sourceCode": "MN4310",
+      "sourceName": "Bayangol",
+      "nativeName": "Баянгол",
+      "provinceId": "MN-049",
+      "nameGeometryIoU": 0.999999998,
+      "parentAreaFraction": 0.87172505002
+    },
+    {
+      "id": "MN-S-6307",
+      "sourceId": "93677404B15769150174360",
+      "sourceCode": "MN6307",
+      "sourceName": "Bayannuur",
+      "nativeName": "Баяннуур",
+      "provinceId": "MN-067",
+      "nameGeometryIoU": 0.999999997513,
+      "parentAreaFraction": 0.863590866219
+    },
+    {
+      "id": "MN-S-4840",
+      "sourceId": "93677404B83577938576500",
+      "sourceCode": "MN4840",
+      "sourceName": "Cagaandelger",
+      "nativeName": "Цагаандэлгэр",
+      "provinceId": "MN-059",
+      "nameGeometryIoU": 0.999999998748,
+      "parentAreaFraction": 0.86720782478
+    },
+    {
+      "id": "MN-S-6104",
+      "sourceId": "93677404B3758114221104",
+      "sourceCode": "MN6104",
+      "sourceName": "Jargalant",
+      "nativeName": "Жаргалант",
+      "provinceId": "MN-035",
+      "nameGeometryIoU": 0.999999997173,
+      "parentAreaFraction": 0.795817524233
+    },
+    {
+      "id": "MN-S-1113",
+      "sourceId": "93677404B72325521473587",
+      "sourceCode": "MN1113",
+      "sourceName": "Nalaix",
+      "nativeName": "Налайх",
+      "provinceId": "MN-1",
+      "nameGeometryIoU": 0.999999996783,
+      "parentAreaFraction": 0.878890943589
+    },
+    {
+      "id": "MN-S-4207",
+      "sourceId": "93677404B28093616266746",
+      "sourceCode": "MN4207",
+      "sourceName": "Shiveegovi",
+      "nativeName": "Шивээговь",
+      "provinceId": "MN-064",
+      "nameGeometryIoU": 0.999999997363,
+      "parentAreaFraction": 0.737580879926
+    },
+    {
+      "id": "MN-S-4164",
+      "sourceId": "93677404B46846850249672",
+      "sourceCode": "MN4164",
+      "sourceName": "Su'mber",
+      "nativeName": "Сүмбэр",
+      "provinceId": "MN-047",
+      "nameGeometryIoU": 0.99999999488,
+      "parentAreaFraction": 0.697906943557
+    },
+    {
+      "id": "MN-S-4201",
+      "sourceId": "93677404B97636792882766",
+      "sourceCode": "MN4201",
+      "sourceName": "Su'mber",
+      "nativeName": "Сүмбэр",
+      "provinceId": "MN-064",
+      "nameGeometryIoU": 0.999999998633,
+      "parentAreaFraction": 0.898121107852
+    }
+  ],
+  "byProvince": {
+    "MN-035": 2,
+    "MN-037": 4,
+    "MN-039": 18,
+    "MN-041": 23,
+    "MN-043": 17,
+    "MN-046": 19,
+    "MN-047": 27,
+    "MN-049": 17,
+    "MN-051": 13,
+    "MN-053": 15,
+    "MN-055": 19,
+    "MN-057": 24,
+    "MN-059": 15,
+    "MN-061": 14,
+    "MN-063": 14,
+    "MN-064": 3,
+    "MN-065": 18,
+    "MN-067": 16,
+    "MN-069": 20,
+    "MN-071": 13,
+    "MN-073": 19,
+    "MN-1": 9
+  },
+  "caveats": [
+    "Geometry represents 2021 boundaries; it is not a claim of current 2026 boundaries.",
+    "The existing macro layer represents 2017. Their national footprints overlap by >99.95%, but some internal boundaries differ substantially, including the Ulaanbaatar exclaves. Use the official ADM1_MN parent assignment and detailed-layer dissolved parent outlines; this preparation does not clip or distort the detailed layer to match the older macro file.",
+    "Korean soum transcriptions are practical phonetic aids and may have alternative spellings."
+  ],
+  "rebuild": "python data/external/mongolia/prepare-soums.py",
+  "normalizedFile": "soums.geojson",
+  "normalizedSha256": "41f43c974850f6007fd058c39b27bb3d71f4814ab613059fb3d375fde5a82149"
+}

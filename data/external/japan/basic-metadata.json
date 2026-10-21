@@ -1,0 +1,19 @@
+{
+  "sourceDate": "2021-01-01",
+  "sourceCommit": "b403e71eb97f1fdf32f63d16bd485129f703855e",
+  "sourceUrl": "https://raw.githubusercontent.com/smartnews-smri/japan-topography/b403e71eb97f1fdf32f63d16bd485129f703855e/data/municipality/geojson/s0010/N03-21_210101.json",
+  "sourceSha256": "cd4b4084f76401e98a9704ca7d75f77e5841029928ab360061e77f87d8bab502",
+  "basicCount": 1349,
+  "microCount": 1896,
+  "basicKinds": {
+    "designated-ward": 175,
+    "city": 772,
+    "special-ward": 23,
+    "county-group": 375,
+    "island-group": 4
+  },
+  "townVillageCount": 926,
+  "designatedCityCount": 20,
+  "grouping": "Prefecture + N03_002 source subprefecture + N03_003 county/island branch; dissolved geometry. Not a new legal municipality.",
+  "detailedData": "micro-municipalities.geojson is reserved for future micro mode; not loaded by the basic editor."
+}

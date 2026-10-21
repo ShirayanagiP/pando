@@ -1,0 +1,139 @@
+{
+  "retrievedAt": "2026-10-20",
+  "upstream": "https://github.com/notofonts/noto-fonts",
+  "commit": "ffebf8c1ee449e544955a7e813c54f9b73848eac",
+  "license": "SIL Open Font License 1.1",
+  "licenseFile": "OFL.txt",
+  "licenseUrl": "https://github.com/notofonts/noto-fonts/blob/ffebf8c1ee449e544955a7e813c54f9b73848eac/LICENSE",
+  "sourceNativeFile": "data/external/world/regions.geojson",
+  "sourceNativeFileSha256": "50b214a5f7286f1e2d79749ad4915a0624706ed57984542d9750bd435efd908a",
+  "regionCount": 4086,
+  "nativeCharacterCount": 456,
+  "previouslyMissingVisibleCodepoints": 186,
+  "missingVisibleCodepointsAfterFallbacks": 0,
+  "nonRenderingFormatControls": [
+    "U+200E LEFT-TO-RIGHT MARK"
+  ],
+  "fonts": [
+    {
+      "id": "noto-arabic",
+      "script": "Arabic",
+      "sourceFile": "NotoSansArabic-Regular.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-fonts/ffebf8c1ee449e544955a7e813c54f9b73848eac/hinted/ttf/NotoSansArabic/NotoSansArabic-Regular.ttf",
+      "sourceSha256": "ceea25b464a656dc3b26849bab9356740401af62aedf1bfa8b7f0d9b75925b1b",
+      "sourceBytes": 240456,
+      "subsetFile": "PandoWorld-Arabic.woff",
+      "subsetSha256": "4de1b9661136331f8163889fd706188cbc7859017d52375654cef80ce775e028",
+      "subsetBytes": 69580,
+      "glyphCount": 1528,
+      "cmapCount": 1125,
+      "actualNativeCodepoints": 47,
+      "newNativeCodepoints": 44,
+      "preservedArabicPresentationForms": 751,
+      "static": true
+    },
+    {
+      "id": "noto-thai",
+      "script": "Thai",
+      "sourceFile": "NotoSansThai-Regular.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-fonts/ffebf8c1ee449e544955a7e813c54f9b73848eac/hinted/ttf/NotoSansThai/NotoSansThai-Regular.ttf",
+      "sourceSha256": "404ddfb5ed0aaa6b6ec8a85700d682978992062d67da93903967b56cbd9a4acc",
+      "sourceBytes": 37752,
+      "subsetFile": "PandoWorld-Thai.woff",
+      "subsetSha256": "ef4a95d99bfbcb76db0f1daeb708aed9b57bace4d807977512dca4d5e48999c9",
+      "subsetBytes": 7504,
+      "glyphCount": 81,
+      "cmapCount": 54,
+      "actualNativeCodepoints": 51,
+      "newNativeCodepoints": 50,
+      "preservedArabicPresentationForms": 0,
+      "static": true
+    },
+    {
+      "id": "noto-devanagari",
+      "script": "Devanagari",
+      "sourceFile": "NotoSansDevanagari-Regular.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-fonts/ffebf8c1ee449e544955a7e813c54f9b73848eac/hinted/ttf/NotoSansDevanagari/NotoSansDevanagari-Regular.ttf",
+      "sourceSha256": "385e78e6359a9d88a0f243d53b1209d7548361ba2194e2b9ec779bcaa7e8949d",
+      "sourceBytes": 219212,
+      "subsetFile": "PandoWorld-Devanagari.woff",
+      "subsetSha256": "29e086c977d3bc45ddbf97e565a4463d21787b61a572ceaf8eb57c9ac782e1b6",
+      "subsetBytes": 33008,
+      "glyphCount": 462,
+      "cmapCount": 58,
+      "actualNativeCodepoints": 55,
+      "newNativeCodepoints": 44,
+      "preservedArabicPresentationForms": 0,
+      "static": true
+    },
+    {
+      "id": "noto-armenian",
+      "script": "Armenian",
+      "sourceFile": "NotoSansArmenian-Regular.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-fonts/ffebf8c1ee449e544955a7e813c54f9b73848eac/hinted/ttf/NotoSansArmenian/NotoSansArmenian-Regular.ttf",
+      "sourceSha256": "c3332abfe298018517d7f5b687a9c0f5c92f163ea9258f23934eaa7a9378f40e",
+      "sourceBytes": 30876,
+      "subsetFile": "PandoWorld-Armenian.woff",
+      "subsetSha256": "a1cd64e6f30a046f52cd4f340957392546b9369ef992e676d00c2c0e1626b730",
+      "subsetBytes": 4512,
+      "glyphCount": 41,
+      "cmapCount": 32,
+      "actualNativeCodepoints": 31,
+      "newNativeCodepoints": 30,
+      "preservedArabicPresentationForms": 0,
+      "static": true
+    },
+    {
+      "id": "noto-hebrew",
+      "script": "Hebrew",
+      "sourceFile": "NotoSansHebrew-Regular.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-fonts/ffebf8c1ee449e544955a7e813c54f9b73848eac/hinted/ttf/NotoSansHebrew/NotoSansHebrew-Regular.ttf",
+      "sourceSha256": "a7fa16fffb27bedb060a0866267c29e9859aeb9c21cc33f5b3aaf6eb062eca85",
+      "sourceBytes": 26900,
+      "subsetFile": "PandoWorld-Hebrew.woff",
+      "subsetSha256": "e5364c9e9e0ad3ed7949a7a2fe60989c186ecfa96100cf7f2350af6f12677e3f",
+      "subsetBytes": 3360,
+      "glyphCount": 30,
+      "cmapCount": 23,
+      "actualNativeCodepoints": 19,
+      "newNativeCodepoints": 18,
+      "preservedArabicPresentationForms": 0,
+      "static": true
+    }
+  ],
+  "method": [
+    "Subset against actual nativeName codepoints; keep all available Arabic cmap letters and all 751 upstream Arabic presentation forms, not only isolated letters.",
+    "Keep GSUB/GPOS layout features and their glyph closure, copyright/license records; remove TrueType hint instructions and rename derived faces to Pando World.",
+    "Use static Regular WOFF faces for the existing OpenType.js parser.",
+    "Greek and Cyrillic characters in the current source are already covered by the existing Pretendard / Noto CJK fonts; no redundant fallback is bundled."
+  ],
+  "limitations": [
+    "These assets add missing outlines only. Arabic/Indic/Thai shaping and bidirectional layout require separate renderer work.",
+    "The current OpenType.js parser can parse the upstream Arabic variable TTF and obtain default-axis glyph paths; this does not demonstrate gvar/HVAR variation application. Static runtime assets avoid relying on it."
+  ],
+  "parserVariableCheck": {
+    "url": "https://raw.githubusercontent.com/notofonts/noto-fonts/ffebf8c1ee449e544955a7e813c54f9b73848eac/unhinted/variable-ttf/NotoSansArabic-VF.ttf",
+    "parsed": true,
+    "axes": {
+      "wght": [
+        100,
+        400,
+        900
+      ],
+      "wdth": [
+        62.5,
+        100,
+        100
+      ]
+    },
+    "unitsPerEm": 1000,
+    "glyphCount": 1661,
+    "arabicAlefGlyphIndex": 46,
+    "defaultAlefPathGenerated": true
+  },
+  "output": "../../world-font-data.js",
+  "outputSha256": "df00716659901bd71e994c669bdb1a81ec6f580ee9a4b5f04023b387200a39e0",
+  "outputBytes": 157919,
+  "rebuild": "python fonts/world/prepare-world-fonts.py",
+  "verify": "node fonts/world/verify-world-fonts.cjs"
+}

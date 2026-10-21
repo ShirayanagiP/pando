@@ -1,0 +1,10 @@
+{
+  "country": "mongolia",
+  "source": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MNG/ADM1/geoBoundaries-MNG-ADM1.geojson",
+  "boundaryDate": "2017",
+  "license": "ODbL 1.0",
+  "details": "../../LICENSE-EAST-ASIA.md",
+  "normalizedFile": "regions.geojson",
+  "normalizedFeatureCount": 22,
+  "retrievedAt": "2026-10-19"
+}

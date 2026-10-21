@@ -1,0 +1,59 @@
+{
+  "prepared": "2026-10-20",
+  "coverage": {
+    "dictionaryRegions": 6982,
+    "dictionaryProvinces": 408,
+    "japaneseContexts": 14,
+    "continentalRegions": 3083,
+    "worldRegions": 3877
+  },
+  "originalDownloads": {
+    "china-wikidata-p442.json": {
+      "sha256": "8b688ef0cd34cf54d791c7ddfabe7b245bd87b6be5357ae4fed435c435ec91f1",
+      "bytes": 111581
+    },
+    "china-wikidata-county-codes.json": {
+      "sha256": "4463bb7a12cc35fe085773fd723815ba6c161e13346c350ab8f0c15166bfbf10",
+      "bytes": 10801221
+    },
+    "sources/japan-addresses-latest.csv": {
+      "sha256": "3edd04b15b787e2e0ae2fcaf3e8201346161048dc808e8f8ca5944d77d00a61b",
+      "bytes": 51865104
+    },
+    "sources/japan-municipal-readings.json": {
+      "sha256": "6d86083af05d568ef77586e7836337b0b502de8281a3fa8def34cad091bec7c1",
+      "bytes": 620862
+    }
+  },
+  "japan": {
+    "source": "https://github.com/geolonia/japanese-addresses",
+    "download": "https://geolonia.github.io/japanese-addresses/latest.csv",
+    "repositoryCommit": "dcf2c3cc819206741368686f17e4092933ae7f69",
+    "license": "CC BY 4.0",
+    "modifications": "Distinct JIS municipality/prefecture reading columns; grouped county member aliases; Korean phonetic readings; ward parent names separated. Two missing municipalities supplemented from their municipal sites."
+  },
+  "china": {
+    "source": "https://www.wikidata.org/",
+    "license": "CC0",
+    "codeProperties": [
+      "P442",
+      "P13971"
+    ],
+    "modifications": "Korean and English labels joined to the existing six-digit administrative codes; unrelated rows discarded; old prefecture suffixes aligned to the map source city type. Huyanghe supplied from Q9435117."
+  },
+  "tools": {
+    "koreanRomanizer": "0.28.0 (build only; GPL-3.0; https://github.com/osori/korean-romanizer)",
+    "hangulize": "Japanese model 0.0.9 (build only; BSD; https://github.com/sublee/hangulize)"
+  },
+  "supplements": [
+    "https://toshimamura.org/about/toshima.html",
+    "https://www.town.yunomae.lg.jp/",
+    "https://www.iburi.pref.hokkaido.lg.jp/gyosei/shicho/index.html",
+    "https://www.wikidata.org/wiki/Q9435117"
+  ],
+  "additionalSources": [
+    "../external/russia/provenance.json",
+    "../external/mongolia/soums-provenance.json",
+    "../external/world/provenance.json"
+  ]
+}

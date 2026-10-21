@@ -1,0 +1,31 @@
+{
+  "date": "2024-04-01",
+  "electionDate": "2024-04-10",
+  "regions": 3553,
+  "parents": 252,
+  "districts": 254,
+  "points": 209018,
+  "spatialJoinCorrections": [
+    {
+      "name": "인천광역시 서구 당하동",
+      "spatial": "2280803",
+      "official": "2280804"
+    }
+  ],
+  "nodingRepairs": [],
+  "sources": {
+    "adm": {
+      "repository": "https://github.com/vuski/admdongkor",
+      "commit": "d5d5a821c8de6cc337d47eeca604d7af76271c9b"
+    },
+    "election": {
+      "repository": "https://github.com/OhmyNews/2024_22_elec_map",
+      "commit": "a51784b86e1fa58cc7691e533da1e72589b35b31"
+    }
+  },
+  "hashes": {
+    "administrative-dongs-20240401.geojson": "4cc4366c3065784fad5f494f1259bc75f3ce4419e2aab97ffb65490c3ad9f2fd",
+    "constituencies-22.geojson": "ee37be315091a80bac6b3bebf1109bd8a1030f6176bebec26df2d6cce1de7a5f",
+    "official-law-appendix.pdf": "209a2739d6517310e1c108762393a8757dc9517755d6634111139b0a1bb241f1"
+  }
+}

@@ -1,0 +1,11 @@
+The GeoJSON files under data/ are derived from:
+
+  vuski/admdongkor (https://github.com/vuski/admdongkor)
+  Original source: 통계청 SGIS (Statistics Korea)
+  License: Creative Commons Attribution 4.0 (CC BY 4.0)
+  https://creativecommons.org/licenses/by/4.0/
+
+Modifications: dissolved to 시도/시군구 level, simplified with mapshaper,
+dong_cnt/sgg_cnt properties attached.
+
+Keep this attribution when redistributing the data.

@@ -1,0 +1,64 @@
+{
+  "country": "japan",
+  "unit": "municipality / city-town-village + Tokyo special ward",
+  "sourceDate": "2021-01-01",
+  "publisher": "SmartNews Media Research Institute, derived from MLIT National Land Numerical Information N03",
+  "repository": "https://github.com/smartnews-smri/japan-topography",
+  "commit": "b403e71eb97f1fdf32f63d16bd485129f703855e",
+  "geojsonUrl": "https://raw.githubusercontent.com/smartnews-smri/japan-topography/b403e71eb97f1fdf32f63d16bd485129f703855e/data/municipality/geojson/s0010/N03-21_210101_designated_city.json",
+  "topojsonUrl": "https://raw.githubusercontent.com/smartnews-smri/japan-topography/b403e71eb97f1fdf32f63d16bd485129f703855e/data/municipality/topojson/s0010/N03-21_210101_designated_city.json",
+  "officialSource": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-v3_0.html",
+  "termsUrl": "https://nlftp.mlit.go.jp/ksj/other/agreement.html",
+  "license": "MLIT open-data terms; Public Data License 1.0 under current MLIT terms, with attribution and modification notice",
+  "attribution": "国土数値情報（行政区域データ、2021年）（国土交通省）をもとに加工。SmartNews Media Research Institute simplified boundaries.",
+  "featureCount": 1741,
+  "provinceCount": 47,
+  "countsByType": {
+    "市": 792,
+    "町": 743,
+    "村": 183,
+    "区": 23
+  },
+  "normalization": "Designated-city wards are merged into their parent city by the source publisher; Tokyo's 23 special wards remain separate municipalities. Five-digit official municipality codes are retained with a JP- namespace.",
+  "excludedFeatures": [
+    {
+      "officialCode": "01700",
+      "name": "蘂取村"
+    },
+    {
+      "officialCode": "01695",
+      "name": "色丹村"
+    },
+    {
+      "officialCode": "01696",
+      "name": "泊村"
+    },
+    {
+      "officialCode": "01697",
+      "name": "留夜別村"
+    },
+    {
+      "officialCode": "01698",
+      "name": "留別村"
+    },
+    {
+      "officialCode": "01699",
+      "name": "紗那村"
+    }
+  ],
+  "contextGeometry": "context.geojson preserves all six excluded municipality geometries and four unassigned features as noneditable context.",
+  "exclusionReason": "Six Russian-administered southern Kuril municipalities claimed by Japan are outside this selected-country administrative map. Geometry outside Japan's present administration is not added as editable Japanese municipalities.",
+  "unassignedGeometry": "Four source features with no official municipality code are retained in unassigned-background.geojson and are not invented as municipalities.",
+  "islands": "No additional size-based island removal. Source retains Ogasawara and other remote islands; map viewport should use mainland focus or scope selection, not drop municipality features.",
+  "repairs": [
+    {
+      "officialCode": "34100",
+      "reason": "Self-intersection[132.422868850529 34.3629325195218]"
+    }
+  ],
+  "sourceHashes": {
+    "municipalities-source.geojson": "8e38c250108fbf40a2307bd8a6ba905c0995e1511fcf83fdfab3318acbcbd4e8",
+    "municipalities-source.topojson": "5dc58fbe979c68c4af59b17255c62df580a93c434b354f867971537dceab3d33",
+    "SOURCE-README.md": "4198410a2e910df977b78ac95d0860aecee5a8cedf92ab22c76f8dc83e5c270e"
+  }
+}

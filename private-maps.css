@@ -1,0 +1,13 @@
+.private-map-import{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.private-map-import>a{font-size:12px;color:#5e7e51}
+.private-map-note,.private-map-status,.private-map-empty{font-size:12px;line-height:1.8;color:#718568;margin-top:12px}
+.private-map-status{min-height:22px;margin-bottom:16px;color:#315744;overflow-wrap:anywhere}
+.private-map-status[role=alert]{color:#a0443d}
+.private-map-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin-top:auto;padding-top:18px}
+.private-map-actions .button{font-size:12px;padding:9px 12px;min-height:38px}
+.private-map-actions .text-button{font-size:11px;min-height:38px}
+.private-map-card p{overflow-wrap:anywhere}
+.private-maps .map-choice-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.private-maps .private-map-card{min-height:200px}
+.dataset-back{display:block;width:fit-content;margin:18px auto;color:#315744;text-underline-offset:4px}
+@media(max-width:600px){.private-maps .map-picker-section-heading{align-items:start;flex-direction:column;gap:8px}.private-map-import>.button{width:100%}.private-map-actions{gap:12px}}

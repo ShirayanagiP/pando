@@ -1,0 +1,90 @@
+{
+  "preparedFor": "Private offline PANDO world first-order map",
+  "retrieved": "2026-10-20",
+  "sources": [
+    {
+      "id": "natural-earth-adm1",
+      "publisher": "Natural Earth / Nathaniel Vaughn Kelso and contributors",
+      "release": "v5.1.2",
+      "commit": "f1890d9f152c896d250a77557a5751a93d494776",
+      "releaseCommitDate": "2022-05-13T23:22:31Z",
+      "representedDate": "Mixed country dates; not a globally synchronized current boundary snapshot",
+      "scale": "1:10m",
+      "file": "ne_10m_admin_1_states_provinces.geojson",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/f1890d9f152c896d250a77557a5751a93d494776/geojson/ne_10m_admin_1_states_provinces.geojson",
+      "sha256": "22d0e3ad85eb3e27f17cabf8ba2d50e554fbc27a87796ff891d958185da62fb5",
+      "featureCount": 4596,
+      "license": "Public domain",
+      "licenseUrl": "https://www.naturalearthdata.com/about/terms-of-use/"
+    },
+    {
+      "id": "natural-earth-adm0",
+      "publisher": "Natural Earth / Nathaniel Vaughn Kelso and contributors",
+      "release": "v5.1.2",
+      "commit": "f1890d9f152c896d250a77557a5751a93d494776",
+      "file": "ne_10m_admin_0_countries.geojson",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/f1890d9f152c896d250a77557a5751a93d494776/geojson/ne_10m_admin_0_countries.geojson",
+      "sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255",
+      "featureCount": 258,
+      "license": "Public domain",
+      "licenseUrl": "https://www.naturalearthdata.com/about/terms-of-use/"
+    },
+    {
+      "id": "latvia-2026",
+      "publisher": "VARAM / State Land Service, Latvia",
+      "representedDate": "2026-05-07",
+      "file": "latvia-2026-source.geojson",
+      "url": "https://data.gov.lv/dati/dataset/7bb04db9-97ce-4a30-b93a-10ba8dafd104/resource/f1fe9a47-62af-4156-84ae-b11ac029b00f/download/administrativas_teritorijas_2026.geojson",
+      "sha256": "50ea95a8bb00ea89ec2c03ecb867b53e4cb34d96998306fbf952ae20bb5774ec",
+      "featureCount": 42,
+      "sourceCRS": "EPSG:3059",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "attribution": "Contains modified VARAM boundaries based on State Land Service address-register geospatial data; coastline/international outline fitted to the existing world map."
+    },
+    {
+      "id": "nepal-provinces",
+      "publisher": "Survey Department of Nepal / OCHA FISS, distributed by geoBoundaries gbOpen",
+      "commit": "9469f09",
+      "boundaryId": "NPL-ADM1-38925275",
+      "representedDate": "2020",
+      "sourceUpdateDate": "2023-01-19",
+      "buildDate": "2023-12-12",
+      "file": "nepal-adm1-source.geojson",
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/NPL/ADM1/geoBoundaries-NPL-ADM1.geojson",
+      "sha256": "5c1799924d277df4f63f6c8e29fbcbb2cd61320fd13e013e431c4a68f09656c1",
+      "featureCount": 7,
+      "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/igo/",
+      "sourceDataset": "https://data.humdata.org/dataset/administrative-bounadries-of-nepal",
+      "attribution": "Contains modified Survey Department of Nepal / OCHA FISS boundaries distributed by geoBoundaries gbOpen. Provincial interiors were fitted to the Natural Earth international outline."
+    }
+  ],
+  "hierarchyReferences": {
+    "France": "https://www.insee.fr/fr/metadonnees/definition/c1696",
+    "United Kingdom": "https://www.ons.gov.uk/explore-local-statistics/areas/K02000001-united-kingdom",
+    "Belgium": "https://www.belgium.be/en/about_belgium/government/regions",
+    "Bosnia and Herzegovina": "https://www.ohr.int/brcko-supervision/",
+    "Italy": "https://www.istat.it/classificazione/codici-dei-comuni-delle-province-e-delle-regioni/",
+    "Spain": "https://www.lamoncloa.gob.es/lang/en/espana/Paginas/state-organization.aspx",
+    "Sri Lanka": "https://www.gov.lk/webdirectory/provincialcouncils",
+    "Hungary": "https://www.ksh.hu/regionalatlas_counties?lang=en",
+    "Burkina Faso": "https://www.geoboundaries.org/api/current/gbOpen/BFA/ADM1/",
+    "Guinea": "https://www.geoboundaries.org/api/current/gbOpen/GIN/ADM1/",
+    "Malawi": "https://www.geoboundaries.org/api/current/gbOpen/MWI/ADM1/",
+    "Slovenia": "https://www.stat.si/StatWeb/en/News/Index/6208",
+    "North Macedonia": "https://www.stat.gov.mk/publikacii/2022/Regionite%20vo%20RM%202022.WEB.pdf",
+    "Kosovo": "https://ask.rks-gov.net/PopulationStats/PopulationByRegion",
+    "Moldova": "https://statistica.gov.md/en/tips-for-creating-using-maps-in-the-statbank-databank-113_4026.html",
+    "Latvia": "https://www.varam.gov.lv/lv/pasvaldibas"
+  },
+  "outputPolicy": {
+    "geometriesSimplified": false,
+    "boundaryConvention": "Natural Earth default de facto geometry throughout; no overlaid alternative national claims",
+    "existingEastAsianSourceUnitsExcluded": ["CHN", "HKG", "JPN", "KOR", "MAC", "MNG", "PRK", "TWN"],
+    "nativeNames": "Explicit source local-name fields first, otherwise matching source-language fields or the original source name",
+    "admin0Fallbacks": "Only seven separately mapped source territories without ADM1 geometry; individually listed in metadata.json",
+    "historicalUnits": "Source-era first-order units are retained where no hierarchy mismatch exists; see historicalAdministrativeSnapshots in metadata.json",
+    "normalizationDetails": "See prepare-world.py, metadata.json, hierarchy-audit.json and LICENSE-SOURCES.md"
+  }
+}

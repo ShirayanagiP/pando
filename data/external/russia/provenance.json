@@ -1,0 +1,40 @@
+{
+  "country": "russia",
+  "retrievedAt": "2026-10-20",
+  "boundaryYear": "2017",
+  "publisher": "OpenStreetMap / Wambacher, via geoBoundaries",
+  "geoBoundariesCommit": "9469f09",
+  "license": "Open Database License 1.0",
+  "attribution": "© OpenStreetMap contributors; geoBoundaries / William & Mary geoLab",
+  "regionCount": 567,
+  "easternSubjectCount": 21,
+  "worldSubjectCount": 83,
+  "federalDistrictCounts": {
+    "far-east": 230,
+    "siberia": 337
+  },
+  "details": "README.md",
+  "normalizedFile": "regions.geojson",
+  "worldFile": "subjects.geojson",
+  "idScheme": "RU-<original OSM relation ID>",
+  "nameSources": [
+    "OSM API original relation version1 and current tags",
+    "Original2017 boundary Name attribute",
+    "UnicodeCLDR48 subject names"
+  ],
+  "limitations": [
+    "2017 boundary snapshot; later municipal mergers are not represented",
+    "Korean phonetics are generated; English fallback is character transcription where no published spelling exists"
+  ],
+  "hashes": {
+    "adm1-source.geojson": "b86ab28823569a4ec881091b0c8608ae31194cb2b195943b8b34fbd56f492320",
+    "adm2-upstream.zip": "faa6461e6a85d021ac4b99ee983b3cf92fa05d4468a8ea79e2dea2615fc30aab",
+    "osm-relations.xml": "11bd86b351d41288af4b95bdb5c1d2e188bb28f8c6534151792938abfa971f29",
+    "osm-relations-v1.xml": "c3725d60392f06c04ae6fdf3e55b180e85e7f8584ef455fb4fd0ea56afbf70d8",
+    "cldr-en-subdivisions.xml": "997a14da1144bb66f36a829db1783afe41f7529e33070afbe964bdd8e387b1d2",
+    "cldr-ko-subdivisions.xml": "4f11aca12342e7678520502a1871b366407f00c777cb5e51f14ae33b6310eb7a",
+    "cldr-ru-subdivisions.xml": "9ea401cea67c2a7b506340453a978569aa955457d108c3673a0776fe4d48329c",
+    "district-names.json": "cf78aca191eb9588913e1c7f76e248871aa309691e965f2ceeba0d6d9a28521e",
+    "subject-names.json": "f1631d072fbe82ffce36aa216b12002e4e5504ca79c88a4b6bddb2bccaa87eab"
+  }
+}
