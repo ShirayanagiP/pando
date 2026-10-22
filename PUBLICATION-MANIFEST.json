@@ -16,8 +16,8 @@
   "files": [
     {
       "path": ".gitignore",
-      "bytes": 2760,
-      "sha256": "48c4dac82779373b07e9c110fb9b9b2eb3baf1ff2bf816040de48963d7cd0d2b"
+      "bytes": 2776,
+      "sha256": "22a2fb89af020bd5155acf0c60776b16c25ada5721a0d891033c6374cb540218"
     },
     {
       "path": ".nojekyll",
@@ -31,8 +31,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2035,
-      "sha256": "9d54f83d9be67e251582dcf5f09c163d0150e2d86a237cb27b3d26f51e0b0c15"
+      "bytes": 2516,
+      "sha256": "1db559dfdbec7015fb1f04863343edac4067ce216f96a485391717fd247b6934"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -41,8 +41,8 @@
     },
     {
       "path": "app.js",
-      "bytes": 111624,
-      "sha256": "c53b1d641ec2f6dbc6215b7ceb9f7f54157ec41bd69fd97d901d9ec05f81a7b3"
+      "bytes": 112718,
+      "sha256": "0a5bb6c7112917d99aea28f19ab91d9869a8a021434cc71ce72377de4a9c7faa"
     },
     {
       "path": "cjk-font-data.js",
@@ -270,6 +270,11 @@
       "sha256": "4c5db75368b5665acc723a3939e7032389cd216efa426a3c76638d09422b90c2"
     },
     {
+      "path": "editor-ui.css",
+      "bytes": 6565,
+      "sha256": "53afc4420bb95ddb5b95d6b87c5e2fac30ba8e8e3910e3ac366257d58a8e2bc3"
+    },
+    {
       "path": "export-files.js",
       "bytes": 1860,
       "sha256": "d492276be5ec0755baed35ad9eb7a320f3eff37e2ff901f814677c0856904103"
@@ -336,8 +341,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 44600,
-      "sha256": "deb8261821837132e39e40175988bcf119fbe223779af3eae66dace086d098a0"
+      "bytes": 44916,
+      "sha256": "c117b33e55cbc7008a11f5f118885106d68866c90a1919944686c6a6fba33f48"
     },
     {
       "path": "label-layout.js",
@@ -356,8 +361,8 @@
     },
     {
       "path": "map-captions.js",
-      "bytes": 13013,
-      "sha256": "4ed1bb88f366c3185afa4e99ce38e7a76b8ca307e3bd131a365d450315fb24d9"
+      "bytes": 14191,
+      "sha256": "844b9f8b5e01304f2101899b7a3b8cd76f81ebbe15f889206ef02175fa647c75"
     },
     {
       "path": "map-catalog.js",

@@ -1,0 +1,67 @@
+/* Screen-only editing sizes. Export dimensions are controlled by the caption settings. */
+:root{--editor-font-size:16px;--editor-control-size:14px}
+:root[data-editor-size=large]{--editor-font-size:18px;--editor-control-size:16px}
+:root[data-editor-size=larger]{--editor-font-size:20px;--editor-control-size:18px}
+.editor-size-control{display:flex;align-items:center;gap:10px;font-size:14px;color:#4d6849;white-space:nowrap}
+.editor-size-control select{min-height:42px;max-width:100%;padding:8px 12px;border:1px solid #cbd8c2;border-radius:7px;background:#fffefa;color:#365344;font-size:14px}
+.legend-dock-heading{flex-wrap:wrap;align-items:center;gap:16px}
+.legend-dock-heading>div:first-child{flex:1;min-width:min(100%,360px)}
+.section-heading h2,.legend-dock h2{font-size:var(--editor-font-size);color:#365344}
+.sidebar .tool{min-height:46px;font-size:var(--editor-control-size);padding:12px 10px}
+.sidebar .tool svg{width:20px;height:20px}.sidebar .tool kbd{font-size:12px}
+.sidebar .section-hint,.sidebar .setting-note,.sidebar .font-status{font-size:12px;line-height:1.65;color:#62785a}
+.sidebar .setting-row,.sidebar .label-color-row{font-size:var(--editor-control-size);min-height:44px;gap:10px;line-height:1.5;color:#4c6747}
+.sidebar .setting-row>span:first-child{min-width:0;flex:1}
+.sidebar select,.sidebar input:not([type=checkbox]):not([type=file]){font-size:var(--editor-control-size);min-height:40px}
+.sidebar .label-mode-row select{max-width:150px;min-width:0}
+.sidebar .label-color-row input{width:108px;font-size:14px}
+.sidebar .switch{width:36px;height:22px;flex-shrink:0}.sidebar .switch:before{width:16px;height:16px}.sidebar .switch:checked:before{transform:translateX(14px)}
+.sidebar .mono,.palette-expansion{font-size:12px}
+.sidebar .caption-options summary,.sidebar .font-custom-row,.sidebar .reset-button{font-size:var(--editor-control-size);min-height:40px;line-height:1.6}
+.sidebar .color-editor label,.sidebar .hex-color-row,.sidebar .rgb-color-row{font-size:13px}
+.sidebar .swatch-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.sidebar .text-button{font-size:13px;min-height:36px;white-space:normal;line-height:1.5}
+.sidebar .button{min-height:44px;font-size:var(--editor-control-size)}
+.sidebar .local-font-tools .button{font-size:13px;white-space:normal;line-height:1.5}
+.sidebar .label-emphasis label{min-height:42px;font-size:14px}
+.project-actions .button,.legend-dock .button{font-size:var(--editor-control-size);min-height:44px;padding:10px 14px}
+.legend-dock .text-button{font-size:var(--editor-control-size);min-height:40px;padding:7px 10px}
+.legend-dock .section-hint{font-size:14px;line-height:1.7;color:#62775b}
+.legend-toolbar{gap:12px;padding:16px}
+.legend-toolbar label{font-size:14px;color:#4e6848;gap:8px}
+.legend-toolbar select{font-size:var(--editor-control-size);min-height:44px;padding:9px 12px;max-width:280px}
+.legend-toolbar>span{font-size:12px;line-height:1.6;color:#63775c}
+.legend-inspector{padding:16px}
+.legend-inspector-heading{font-size:var(--editor-font-size);gap:12px}
+.legend-inspector-heading>span{font-size:13px;color:#62775b}
+.legend-inspector .legend-meta label{font-size:14px;color:#4d6748}
+.legend-inspector .legend-meta input,.legend-inspector .legend-meta select{font-size:var(--editor-control-size);min-height:44px;padding:10px;max-width:none}
+.legend-dock .unfilled-row,.legend-dock .unfilled-row>span:last-child{font-size:14px;color:#63795b;min-height:44px}
+.legend-dock .legend-list.caption-editor{touch-action:pan-y}
+.legend-dock .caption-editor>svg{width:100%;height:auto;max-width:none}
+.legend-dock .caption-editor [data-legend-entry],.legend-dock .caption-editor [data-caption-continuation]{touch-action:pan-y}
+.outline-heading h3{font-size:var(--editor-font-size)}.outline-heading .section-hint,.outline-controls label,.outline-members .section-hint{font-size:13px;line-height:1.6}
+.outline-controls input[type=number],.outline-members select{min-height:40px;font-size:var(--editor-control-size)}
+.outline-card .legend-row{min-height:46px}.outline-card .legend-name{font-size:var(--editor-control-size)}.outline-card .legend-count{font-size:13px}
+.outline-edit-bar{font-size:14px}.outline-edit-bar>span:nth-child(2){font-size:13px}
+.election-name strong,.workflow-name,.workflow-district-title,.party-card .workflow-name{font-size:var(--editor-control-size)}
+.election-name small,.workflow-district-sub,.workflow-navigation label{font-size:12px}
+.workflow-assignment-row,.regional-seat-table,.workflow-bulk strong,.election-toolbar>span{font-size:var(--editor-control-size)}
+.election-toolbar input,.election-toolbar select,.workflow-bulk input,.workflow-bulk select,.workflow-assignment-row select{min-height:44px;font-size:var(--editor-control-size)}
+.workflow-navigation>span,.seat-summary{font-size:var(--editor-font-size)}
+.legend-tab-heading [role=tab]{font-size:var(--editor-control-size);min-height:44px;padding:10px 14px}
+.quick-color-picker{font-size:14px}.quick-color-picker input{font-size:16px;min-height:42px}
+.quick-color-picker .text-button{font-size:13px;min-height:36px}.quick-color-picker .button{min-height:44px;font-size:14px}
+.quick-color-heading h2{font-size:16px}.quick-color-heading .icon-button{width:40px;height:40px}
+.region-panel{width:310px;max-width:calc(100% - 28px)}.region-panel input,.region-panel select,.region-panel .button,.region-result{font-size:var(--editor-control-size);min-height:44px}.region-panel-heading strong{font-size:16px}.region-result small{font-size:12px}.region-result-heading{font-size:12px}
+.dropdown-menu strong{font-size:14px}.dropdown-menu small{font-size:12px}.project-info p,.save-status,.progress-summary{font-size:12px}
+.history-actions .icon-button,.zoom-controls .icon-button{width:44px;height:44px}.zoom-controls .zoom-value{min-width:44px;height:36px;font-size:12px}
+@media(min-width:1101px){.app-layout{grid-template-columns:320px minmax(0,1fr)}}
+@media(max-width:720px),(pointer:coarse) and (max-width:1100px){
+  .legend-dock-heading{gap:12px}.editor-size-control{width:100%;justify-content:space-between}.editor-size-control select{flex:1;max-width:210px}
+  .legend-toolbar{padding:12px}.legend-toolbar label{width:100%}.legend-toolbar select{width:100%;max-width:none}.legend-toolbar .button{width:100%}
+  .legend-inspector-heading>.button,.legend-inspector-heading>.text-button{min-height:44px}
+  .legend-inspector .legend-inspector-fields label{width:100%;min-width:0}
+  .project-actions .button{font-size:13px;padding:10px}
+  .mobile-map-tools .tool,.mobile-map-tools>button{font-size:12px}
+}

@@ -14,6 +14,11 @@
   let searchFiltersKey=null;
   const Color=window.PandoColors;
   const $ = (id) => document.getElementById(id);
+  const EDITOR_SIZE_KEY='pando-editor-size-v1';
+  let editorSize='normal';
+  try{const saved=localStorage.getItem(EDITOR_SIZE_KEY);if(['normal','large','larger'].includes(saved))editorSize=saved;}catch{}
+  document.documentElement.dataset.editorSize=editorSize;
+  $('editor-size').value=editorSize;
   const NS = 'http://www.w3.org/2000/svg';
   const STORAGE_KEY = window.PandoMapCatalog.storageKey(DATA);
   const COLORS = Color.palette(24);
@@ -394,12 +399,19 @@
   let lastLegendPreview='',captionInput=null,legendDrag=null,suppressCaptionClick=false;
   function renderLegendPreview(){
     if(dockTab!=='legend'||legendDrag)return;
-    const caption=window.PandoCaptions.compactLegend(state,Model.groupCounts(Model.scopedProject(state,DATA)).total,1210);
+    const width=$('legend-list').clientWidth;if(!width)return;
+    const caption=window.PandoCaptions.editorLegend(state,Model.groupCounts(Model.scopedProject(state,DATA)).total,width,{normal:16,large:18,larger:20}[editorSize]);
     if(caption.svg!==lastLegendPreview){$('legend-list').innerHTML=caption.svg;lastLegendPreview=caption.svg;}
     $('legend-list').firstElementChild?.setAttribute('role','group');
     for(const node of $('legend-list').querySelectorAll('[data-legend-entry],[data-caption-continuation]'))node.classList.toggle('selected',!activeOutline()&&(node.dataset.legendEntry||node.dataset.captionContinuation)===state.activeGroup);
     for(const node of $('legend-list').querySelectorAll('[data-outline-entry]'))node.classList.toggle('selected',node.dataset.outlineEntry===activeOutlineId);
   }
+  let editorLegendWidth=0,editorLegendFrame=0;
+  const editorLegendObserver=new ResizeObserver(entries=>{
+    const width=Math.floor(entries[0].contentRect.width);if(width===editorLegendWidth)return;editorLegendWidth=width;
+    cancelAnimationFrame(editorLegendFrame);editorLegendFrame=requestAnimationFrame(()=>{if(!captionInput)renderLegendPreview();});
+  });
+  editorLegendObserver.observe($('legend-list'));
   function renderLegend(){
     closeQuickColor();legendCardObserver.disconnect();
     $('legend-list').classList.remove('legend-masonry');$('legend-list').style.height='auto';
@@ -936,7 +948,7 @@
       beginCaptionRename(target.id,target.kind,target.node.querySelector('[data-caption-name]')||target.node);
     });
     host.addEventListener('keydown',e=>{const target=captionTarget(e,host);if(!target)return;if(['Enter','F2'].includes(e.key)){e.preventDefault();beginCaptionRename(target.id,target.kind,target.node.querySelector('[data-caption-name]')||target.node);}if(target.kind==='group'&&e.altKey&&['ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();mutate(()=>state.groups=window.PandoLegendOrder.move(state.groups,target.id,e.key==='ArrowUp'?-1:1));}});
-    host.addEventListener('pointerdown',e=>{const target=captionTarget(e,host);if(!target||target.kind==='party'||e.button!==0||e.target.closest('[data-caption-swatch]'))return;
+    host.addEventListener('pointerdown',e=>{const target=captionTarget(e,host);if(!target||target.kind==='party'||e.button!==0||e.pointerType==='touch'||e.target.closest('[data-caption-swatch]'))return;
       const group=target.kind==='outline'?state.outlineLayers.find(g=>g.id===target.id):state.groups.find(g=>g.id===target.id),zones=[];
       for(const node of host.querySelectorAll('[data-caption-hit]')){const row=node.parentElement;zones.push({node:row,id:row.dataset.legendEntry||row.dataset.captionContinuation||row.dataset.outlineEntry,outline:!!row.dataset.outlineEntry,kind:'row',rect:node.getBoundingClientRect()});}
       for(const node of host.querySelectorAll('[data-legend-slot-before],[data-legend-slot-after]'))zones.push({node,id:node.dataset.legendSlotBefore||node.dataset.legendSlotAfter,after:!!node.dataset.legendSlotAfter,kind:'slot',rect:node.getBoundingClientRect()});
@@ -973,6 +985,11 @@
   window.addEventListener('resize',positionQuickColor);window.addEventListener('scroll',positionQuickColor,{passive:true});
   document.querySelectorAll('.tool').forEach(b=>b.addEventListener('click',()=>{touchInput.cancel();endGesture();setTool(b.dataset.tool);if(sidebarMedia.matches)toggleSidebar(false);}));
   $('add-group').addEventListener('click',()=>addGroup());
+  $('editor-size').addEventListener('change',e=>{
+    editorSize=e.target.value;document.documentElement.dataset.editorSize=editorSize;
+    try{localStorage.setItem(EDITOR_SIZE_KEY,editorSize);}catch{}
+    renderLegendPreview();
+  });
   for(const [id,key]of [['show-borders','borders'],['show-family-borders','familyBorders'],['show-region-borders','regionBorders'],['show-labels','labels'],['omit-suffix','omitSuffix'],['auto-spacing','autoSpacing'],['labels-over-water','labelsOverWater'],['export-legend','legend']])$(id).addEventListener('change',e=>mutate(()=>state.settings[key]=e.target.checked));
   $('label-mode').addEventListener('change',e=>mutate(()=>state.settings.labelMode=e.target.value));
   $('label-style').addEventListener('change',e=>mutate(()=>state.settings.labelStyle=e.target.value));
