@@ -8,6 +8,7 @@
   const Tree=typeof module==='object'&&module.exports?require('./legend-tree.js'):globalThis.PandoLegendTree;
   const outlineCaches=new WeakMap();
   const caches=new WeakMap();
+  const regionShapes=new WeakMap();
   const coastalCaches=new WeakMap();
   const landCaches=new WeakMap();
   const mainlandCaches=new WeakMap();
@@ -133,7 +134,7 @@
       centers:members.map(index=>data.regions[index].centroid||data.regions[index].center)};
     if(cache.size>=512)cache.delete(cache.keys().next().value);cache.set(key,result);return result;
   }
-  function colorTerritories(project,data){
+  function colorTerritories(project,data,{labels=true}={}){
     const groups=new Map(project.groups.map(g=>[g.id,g]));
     const colors=data.regions.map(r=>groups.get(project.assignments[r.id])?.color.toLowerCase()||null);
     const visited=new Set(),result=[];
@@ -145,7 +146,7 @@
         for(const neighbor of data.topology.neighbors[current])if(!visited.has(neighbor)&&colors[neighbor]===colors[index]){visited.add(neighbor);queue.push(neighbor);}
       }
       members.sort((a,b)=>a-b);
-      result.push({id:'territory-'+members[0],color:colors[index],members,regionIds:members.map(i=>data.regions[i].id),...componentShape(members,data)});
+      result.push({id:'territory-'+members[0],color:colors[index],members,regionIds:members.map(i=>data.regions[i].id),...(labels?componentShape(members,data):cachedOutline(members,data))});
     }
     return result;
   }
@@ -179,7 +180,11 @@
       return indices.length?[{...layer,...cachedOutline(indices,data)}]:[];
     });
   }
-  function regionShape(index,data){return componentShape([index],data);}
+  function regionShape(index,data){
+    let shapes=regionShapes.get(data);if(!shapes){shapes=new Map();regionShapes.set(data,shapes);}
+    if(!shapes.has(index))shapes.set(index,componentShape([index],data));
+    return shapes.get(index);
+  }
   function landParts(shape,data){
     let parts=landCaches.get(shape.segments);
     if(!parts){
@@ -306,7 +311,13 @@
     let cache=borderCaches.get(data);
     if(!cache){
         const lines=new Array(topology.edges.length);
-      cache={lines,colors:null,visibility:null,chunks:Array.from({length:Math.ceil(lines.length/size)},(_,i)=>({id:String(i),d:''}))};
+      cache={lines,colors:null,visibility:null,chunks:Array.from({length:Math.ceil(lines.length/size)},(_,i)=>{
+        const bounds=[Infinity,Infinity,-Infinity,-Infinity];
+        for(let edge=i*size;edge<Math.min((i+1)*size,topology.edges.length);edge++)for(const point of topology.edges[edge].slice(0,2)){
+          const [x,y]=topology.points[point];bounds[0]=Math.min(bounds[0],x);bounds[1]=Math.min(bounds[1],y);bounds[2]=Math.max(bounds[2],x);bounds[3]=Math.max(bounds[3],y);
+        }
+        return {id:String(i),d:'',bounds};
+      })};
       borderCaches.set(data,cache);
     }
     const dirty=new Set();
@@ -323,7 +334,7 @@
           if(!cache.lines[i])cache.lines[i]='M'+topology.points[owners[0]].join(',')+'L'+topology.points[owners[1]].join(',');
           lines.push(cache.lines[i]);
       }
-      cache.chunks[chunk]={id:String(chunk),d:lines.join('')};
+      cache.chunks[chunk]={...cache.chunks[chunk],d:lines.join('')};
     }
     cache.colors=colors;cache.visibility=visibility;return cache.chunks;
   }

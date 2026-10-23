@@ -5,6 +5,7 @@
 })(globalThis,()=>{
   'use strict';
   const indexes=new WeakMap();
+  const regionIndexes=new WeakMap();
   const outlines=new WeakMap();
   const outlineSeams=new WeakMap();
   const intersects=(a,b)=>a[0]<=b[2]&&a[2]>=b[0]&&a[1]<=b[3]&&a[3]>=b[1];
@@ -62,7 +63,10 @@
   }
   function scene(project,data,{scale,bounds,wrap=null}){
     const level=tier(scale,data.rendering?.thresholds),views=windows(bounds,wrap),scope=project.visibleCountries?new Set(project.visibleCountries):null;
-    const visible=new Set(data.regions.filter(r=>(!scope||scope.has(r.country))&&inView(r.bounds,views)).map(r=>r.id));
+    let regionIndex=regionIndexes.get(data);
+    if(!regionIndex){regionIndex={tree:tree(data.regions.filter(r=>r.bounds)),unbounded:data.regions.filter(r=>!r.bounds)};regionIndexes.set(data,regionIndex);}
+    const candidatesInView=[...regionIndex.unbounded];query(regionIndex.tree,views,candidatesInView);
+    const visible=new Set(candidatesInView.filter(r=>!scope||scope.has(r.country)).map(r=>r.id));
     const chunks=[];
     if(project.settings.regionBorders&&data.rendering){
       let index=indexes.get(data);
@@ -92,5 +96,14 @@
     const normalized=wrap.left+((center-wrap.left)%wrap.period+wrap.period)%wrap.period;
     return x+(center-normalized)*k;
   }
-  return {tier,windows,inView,path,outline,scene,normalizePan};
+  // Screen-space glyph collision queries keep the original exact overlap rule.
+  function collisionIndex(padding=2,cellSize=128){
+    const cells=new Map(),large=[],all=[];
+    const range=b=>[Math.floor((b.x-padding)/cellSize),Math.floor((b.y-padding)/cellSize),Math.floor((b.x+b.width+padding)/cellSize),Math.floor((b.y+b.height+padding)/cellSize)];
+    const overlaps=(a,b)=>a.x<b.x+b.width+padding&&a.x+a.width+padding>b.x&&a.y<b.y+b.height+padding&&a.y+a.height+padding>b.y;
+    function add(box){all.push(box);const [l,t,r,b]=range(box);if((r-l+1)*(b-t+1)>256){large.push(box);return;}for(let x=l;x<=r;x++)for(let y=t;y<=b;y++){const key=x+','+y;if(!cells.has(key))cells.set(key,[]);cells.get(key).push(box);}}
+    function intersects(box){const [l,t,r,b]=range(box);if((r-l+1)*(b-t+1)>256)return all.some(other=>overlaps(box,other));if(large.some(other=>overlaps(box,other)))return true;for(let x=l;x<=r;x++)for(let y=t;y<=b;y++)if(cells.get(x+','+y)?.some(other=>overlaps(box,other)))return true;return false;}
+    return {add,intersects};
+  }
+  return {tier,windows,inView,path,outline,scene,normalizePan,collisionIndex};
 });

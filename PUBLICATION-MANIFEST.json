@@ -31,8 +31,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2516,
-      "sha256": "1db559dfdbec7015fb1f04863343edac4067ce216f96a485391717fd247b6934"
+      "bytes": 2493,
+      "sha256": "c34a8d8f0c8971bf106e0f18decb9a14a54f2f8e33f975a874c98b501397dd4b"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -41,8 +41,8 @@
     },
     {
       "path": "app.js",
-      "bytes": 112718,
-      "sha256": "0a5bb6c7112917d99aea28f19ab91d9869a8a021434cc71ce72377de4a9c7faa"
+      "bytes": 114072,
+      "sha256": "b76d7750022a5759d03de78865d783d7b09c23ce19f193bcc0dfd22db2b4f280"
     },
     {
       "path": "cjk-font-data.js",
@@ -376,8 +376,8 @@
     },
     {
       "path": "map-renderer.js",
-      "bytes": 5494,
-      "sha256": "f56c24df9e3e0ffda6cc499994b01761dd803e9f9ea26de45e60640c53111d66"
+      "bytes": 6885,
+      "sha256": "85db667770fdfbbf1c0c18d4a95555959653e22a25992e5c4ca91e317b8c3179"
     },
     {
       "path": "map-touch.js",
@@ -431,8 +431,8 @@
     },
     {
       "path": "project-model.js",
-      "bytes": 17926,
-      "sha256": "bf72951427bf008439fd1003ddc3e3c221bd3a916631a15a67bd83d451b4ea58"
+      "bytes": 18060,
+      "sha256": "bc2f43ced1212754918f8f959d875022c73f04ca4c9359b84cf17a3800a2df1e"
     },
     {
       "path": "project-svg.js",
@@ -451,8 +451,8 @@
     },
     {
       "path": "territory-geometry.js",
-      "bytes": 21551,
-      "sha256": "d089bfc720dafd50c298756c0e1ce1a824de0859dc941580752977fa96a4607b"
+      "bytes": 22230,
+      "sha256": "15fd53e8234231b5e0aa45b73a67b226c78c356831f286f3740be23b21bcf1b3"
     },
     {
       "path": "vendor/opentype-LICENSE.txt",

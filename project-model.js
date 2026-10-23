@@ -143,7 +143,10 @@
     return {...project,assignments:Object.fromEntries(Object.entries(project.assignments).filter(([id])=>ids.has(id))),visibleCountries:[...countries]};
   }
   function mapLabels(project,data,territories=null) {
-    project=scopedProject(project,data);territories=territories||Geometry.colorTerritories(project,data);
+    if(!project.settings.labels&&(!project.settings.labelMode||project.settings.labelMode==='none'))return [];
+    project=scopedProject(project,data);
+    const showLegend=['legend','both'].includes(project.settings.labelMode);
+    territories=showLegend?(territories||Geometry.colorTerritories(project,data)):[];
     const groups=new Map(project.groups.map(g=>[g.id,g])),labels=[],singleRegion=new Set();
     if(project.settings.labelMode==='family')for(const family of Geometry.familyTerritories(project,data)){
       const lines=[displayName(groups.get(family.groupId))];
@@ -154,7 +157,6 @@
         labels.push({id:part.id,regionIds:part.regionIds,color:'#244033',bounds:part.bounds,...layout});
       }
     }
-    const showLegend=['legend','both'].includes(project.settings.labelMode);
     if(showLegend)for(const territory of territories){
       const memberGroups=new Set(territory.regionIds.map(id=>project.assignments[id]));
       const legends=project.groups.filter(g=>memberGroups.has(g.id));
